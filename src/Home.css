@@ -3,25 +3,105 @@ p, ol, ul {
   margin-block-end: 0;
   margin-top: -0.2em;
   margin-bottom: -0.2em;
+  font-family: Arial, Helvetica, 'ＭＳ ゴシック';
 }
-  
+
+
+.PageHeader{
+    font-family: Arial, Helvetica, '游ゴシック';
+    background-color: rgb(46, 46, 43);  /* 将来的に背景は透明度のある写真に変えたい */
+    display: flex;
+    /*左から並べていく*/
+    /* flex-direction: row;  */
+    /*並べるときに間に自動的に空白を入れて整列してくれる*/     
+    justify-content: space-between; 
+    color: white;
+    min-height: 3vmin;
+    font-size: large;
+    /* font-size: 2vh; */
+}
+
+.SearchArticle{
+    min-width: 25vw;
+    max-width: 40vw;
+}
+.ServiceTitle{
+    margin-left: 1vw;
+    margin-right: 2vw;
+    width: auto;
+    color: #32a5c5;
+    align-items: left;
+    vertical-align: middle;
+    font-weight: bold;
+    display: inline-block;
+}
+
+button{
+    margin-left: 1vw; 
+    margin-right: 1vw; 
+    background-color: white;
+    text-decoration: none;
+    border-color: white;
+    border-top: solid 2px #4fd2e4;
+    border-right: white;
+    border-left: white;
+    border-bottom: solid 2px #32a5c5;
+}
+
+.PageHeaderButtons{
+    width: 40vw;
+    align-items: right;
+    justify-content: space-around; 
+}
+
+.Account{
+    display: inline-block;
+    align-items: right;
+}
+
+
 .Home {
+  font-family: Arial, Helvetica, '游ゴシック';
   text-align: auto;
 }
 
-.Home-header {
-  
-  background-color: #282c34;
-  min-height: 10vh;
+.HomeHeader {
+  background-color: rgb(73, 73, 69);  /* 将来的に背景は透明度のある写真に変えたい */
+  padding: 2vw;
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /*左から並べていく*/
   align-items: center;
-  justify-content: left;
+  /*並べるときに間に自動的に空白を入れて整列してくれる*/
+  /* justify-content: space-evenly;  */
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #32a5c5
 }
 
-.Home-body {
+.ServiceExplanation{
+    width: 60%;
+    display: inline-block;
+}
+.ServiceLogo{
+    font-size: calc(10px + 6vw);
+    font-weight: bold;
+    color: #32a5c5
+}
+
+.ServiceIdea{
+    height: auto;
+    font-size: calc(10px + 1vw);
+    color: white;
+}
+.ServicePurpose{
+    padding: 2vw;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    font-size: calc(10px + 2vw);
+    color: white;
+}
+
+.HomeBody {
   margin: 2vh;
   margin-top: 5%;
   background: white;
