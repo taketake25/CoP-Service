@@ -52,7 +52,11 @@ class PageHeader extends Component {
             query: "query text"
         });
     }
-    EditNewArticle(params) {
+    showSelfStocks(params) {
+
+    }
+    editNewArticle(params) {
+
     }
 
     render() {
@@ -60,21 +64,21 @@ class PageHeader extends Component {
         return (
             <div className="PageHeader">
                 <div className="ServiceTitle">D-PENS</div>
-                <div className="SearchArticle">
-                    <div>
-                        <label>
-                            検索：
-                            <input
-                                type="text"
-                                value={this.state.query}
-                                onChange={(event) => this.handleChangeQuery(event)}
-                            />
-                        </label>
-                    </div>
-                </div>
                 <div className="PageHeaderButtons">
-                    <button onClick={this.EditNewArticle}>ストック</button>
-                    <button onClick={this.EditNewArticle}>新規投稿</button>
+                    <div className="SearchArticle">
+                        <div>
+                            <label>
+                                検索：
+                            <input
+                                    type="text"
+                                    value={this.state.query}
+                                    onChange={(event) => this.handleChangeQuery(event)}
+                                />
+                            </label>
+                        </div>
+                    </div>
+                    <button onClick={this.showSelfStocks}>ストック</button>
+                    <button onClick={this.editNewArticle}>新規投稿</button>
                     <div className="Account">アカウント</div>
                 </div>
             </div>
@@ -104,8 +108,8 @@ function HomeBody(props) {
         <div className='HomeBody'>
             <div classname='HomeBox HomeRecentry'>
             </div>
-            <Ranking />
-            <HomeCategory />
+            <UserRanking />
+            <CategoryList />
         </div>
     );
 }
@@ -118,20 +122,22 @@ function HomeFooter(props) {
     );
 }
 
-function Ranking(props) {
+function UserRanking(props) {
     // 後で実装する
     return (
         <div className='HomeFooter'>
         </div>
     );
 }
-function HomeCategory(props) {
-    // 後で実装する
-    return (
-        <div className='HomeFooter'>
-        </div>
-    );
+class CategoryList extends Component {
+    constructor(props) {
+        super(props)
+    }
+    render() {
+        return (
+            <p>a</p>
+        );
+    }
 }
-
 
 export default Home;
