@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import autoBind from 'react-autobind';
 import './Home.css';
+import ArticleList from './Article';
 
 class Home extends Component {
     constructor(props) {
@@ -52,9 +53,12 @@ class PageHeader extends Component {
             query: "query text"
         });
     }
+
+    // ストックボタンを押したときの挙動
     showSelfStocks(params) {
 
     }
+    // 投稿ボタンを押したときの挙動
     editNewArticle(params) {
 
     }
@@ -108,6 +112,7 @@ function HomeBody(props) {
         <div className='HomeBody'>
             <div classname='HomeBox HomeRecentry'>
             </div>
+            <ArticleList />
             <UserRanking />
             <CategoryList />
         </div>
@@ -118,6 +123,7 @@ function HomeFooter(props) {
     // 後で実装する
     return (
         <div className='HomeFooter'>
+            Footer
         </div>
     );
 }
@@ -125,7 +131,8 @@ function HomeFooter(props) {
 function UserRanking(props) {
     // 後で実装する
     return (
-        <div className='HomeFooter'>
+        <div className='UserRanking'>
+            <p>UserRanking</p>
         </div>
     );
 }
@@ -135,7 +142,9 @@ class CategoryList extends Component {
     }
     render() {
         return (
-            <p>a</p>
+            <div className="Category">
+                <p>Category</p>
+            </div>
         );
     }
 }

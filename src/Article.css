@@ -1,0 +1,36 @@
+img{
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.ArticleCard{
+    /* margin: 2em 0; */
+    height: auto;
+    padding: 2%;
+    border-radius: 10px 10px 10px 10px;
+    /* border-top: solid 1px black; */
+    border-right: double 5px #4fd2e4;
+    border-left: double 5px #4fd2e4;
+    /* border-bottom: solid 1px black; */
+}
+
+.ArticleMetaData{
+    vertical-align: middle;
+    display: flex;
+    justify-content: space-between; 
+    font-size: 1.2em;
+}
+.ArticleCardTitle{
+    display: inline-block;
+
+}
+.ArticleCardDay{
+    display: inline-block;
+
+}
+.ArticleTag{
+
+}
+.ArticleCardAgenda{
+
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import autoBind from 'react-autobind';
-import './ArticleList.css';
+import './Article.css';
 
 class ArticleList extends Component {
     constructor(props) {
@@ -45,7 +45,9 @@ class ArticleList extends Component {
     }
 }
 
-class ArticleList extends Component {
+
+const imagePath = "./image.png"
+class ArticleCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -69,12 +71,16 @@ class ArticleList extends Component {
     render() {
         return (
             <div className="ArticleCard">
-                <div className="ArticleCardTitle"></div>
-                <div className="ArticleCardAgenda"></div>
-                <div className="ArticleCardPoints"></div>
+                <div className="ArticleMetaData">
+                    <img style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='user imaga' />
+                    <div className="ArticleCardTitle">記事のタイトルやでな</div>
+                    <div className="ArticleCardDay">2019/12/25 18:51</div>
+                </div>
+                <div className="ArticleTag">記事のタグがここに来るんやで</div>
+                <div className="ArticleCardAgenda">記事の概要が表示されるんやで</div>
             </div>
         );
     }
 }
 
-export default Article;
+export default ArticleList;

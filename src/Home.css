@@ -26,11 +26,11 @@
 }
 
 .PageHeaderButtons{
-    /* margin: 0 0 0 auto; */
+    margin-left: auto;
     /* display: flex; */
     width: 85%;
     /* align-items: right; */
-    justify-content: right;
+    justify-content: flex-end;
     vertical-align: middle;
 }
 
@@ -89,6 +89,7 @@ button{
     width: 60%;
     display: inline-block;
 }
+
 .ServiceLogo{
     font-size: calc(10px + 6vw);
     font-weight: bold;
@@ -109,6 +110,11 @@ button{
     color: white;
 }
 
+
+/* --------------------------------------- */
+/* |                BODY                 | */
+/* --------------------------------------- */
+
 .HomeBody {
   margin: 2vh;
   margin-top: 5%;
@@ -119,12 +125,27 @@ button{
   text-align: left;
 }
 
-.Home-box {
+.HomeBox {
   align-self: auto;
   font-size: 15px;
   text-align: left;
   text-align: top;
   /* margin: 1vh; */
+}
+
+
+.HomeFooter{
+
+}
+.UserRanking{
+
+}
+.Category{
+  
+}
+
+.HomeFooter{
+
 }
 
 .App-textview{
@@ -135,16 +156,6 @@ button{
   height: auto;
 }
 
-.App-link {
+.Link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
 }
