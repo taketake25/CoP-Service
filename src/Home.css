@@ -106,7 +106,7 @@ button{
     display: inline-block;
     width: 100%;
     height: auto;
-    font-size: calc(10px + 2vw);
+    font-size: calc(10px + 1vw);
     color: white;
 }
 
@@ -116,13 +116,16 @@ button{
 /* --------------------------------------- */
 
 .HomeBody {
-  margin: 2vh;
-  margin-top: 5%;
+  font-family: Arial, Helvetica, '游ゴシック';
+  justify-content: space-around; 
+  margin: 1em;
+  margin-top: 2em;
   background: white;
+  display: flex;
   /* min-height: 30vh;
   min-width: 100vh; */
-  align-items: left; 
-  text-align: left;
+  /* align-items: left;  */
+  /* text-align: left; */
 }
 
 .HomeBox {
@@ -134,20 +137,35 @@ button{
 }
 
 
-.HomeFooter{
-
+.ArticleSide{
+  width: 20%;
+  padding: 1em;
+  border-radius: 10px 10px 10px 10px;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+  border-right: solid 2px black;
+  border-left: solid 2px black;
+  display: inline-block;
+  align-items: center;
 }
+
 .UserRanking{
+  text-align: center;
+  border-right: double 5px #4fd2e4;
+  border-left: double 5px #4fd2e4;
 
 }
+
 .Category{
+  text-align: center;
+  border-right: double 5px #4fd2e4;
+  border-left: double 5px #4fd2e4;
   
 }
 
 .HomeFooter{
 
 }
-
 .App-textview{
   display: inline-block;
   margin-left: 1vw;

@@ -100,7 +100,7 @@ function HomeHeader(props) {
             </div>
             <div className="ServicePurpose">
                 D-PENSとは<br />
-                <hr />
+                <hr size="5" noshade />
                 「工学系の大学生だから，誰かと一緒にモノ作りを楽しみたい！」と思ったことはないでしょうか．でも，サークルやプロジェクトなどの特殊な環境に身を置いている人や，開発好きな友達がいないとなかなかチーム開発の機会はないですよね．だからといって，ほかの集団に気軽に遊びに行けるほどの度胸はないし...<br />
             </div>
         </div>
@@ -110,11 +110,11 @@ function HomeHeader(props) {
 function HomeBody(props) {
     return (
         <div className='HomeBody'>
-            <div classname='HomeBox HomeRecentry'>
-            </div>
             <ArticleList />
-            <UserRanking />
-            <CategoryList />
+            <div className="ArticleSide">
+                <UserRanking />
+                <CategoryList />
+            </div>
         </div>
     );
 }
@@ -136,6 +136,7 @@ function UserRanking(props) {
         </div>
     );
 }
+
 class CategoryList extends Component {
     constructor(props) {
         super(props)
