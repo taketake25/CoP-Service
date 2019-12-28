@@ -23,13 +23,14 @@ class EditNewArticle extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            text: " ",
+            text: "",
             markedLines: [],
             submit: false
         }
         autoBind(this);
         this.handleChangeText = this.handleChangeText.bind(this);
         this.handleChangeSubmit = this.handleChangeSubmit.bind(this);
+        marked.setOptions({ breaks: true });
     }
 
     handleChangeText(event) {
@@ -59,7 +60,8 @@ class EditNewArticle extends Component {
                         </div>
                         {/* ドロップダウンから選択する方法にする．というかあとで実装する */}
                         <div className="EditNewArticleHeaderTag">
-                            <input type="text" placeholder="Tags   デザインは後でなおす" value={this.state.query}
+                            <input type="text"
+                                placeholder="Tags   デザインは後で 画像sanitize-html" value={this.state.query}
                                 onChange={(event) => this.handleChangeSubmit(event)} />
                         </div>
                     </div>
@@ -69,6 +71,7 @@ class EditNewArticle extends Component {
 
                         {/* 文章の太字や画像の設定をする場所． 後で実装する */}
                         {/* <div className="EditNewArticleBodyOption"></div> */}
+                        {/* https://github.com/apostrophecms/sanitize-html */}
                         <div className="EditNewArticleBodyEditor">
                             <textarea
                                 value={this.state.text}

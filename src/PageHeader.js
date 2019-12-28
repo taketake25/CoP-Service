@@ -44,14 +44,12 @@ class PageHeader extends Component {
                 <div className="PageHeaderButtons">
                     <div className="SearchArticle">
                         <div>
-                            <label>
-                                検索：
-                  <input
-                                    type="text"
-                                    value={this.state.query}
-                                    onChange={(event) => this.handleChangeQuery(event)}
-                                />
-                            </label>
+                            <input
+                                placeholder="検索"
+                                type="text"
+                                value={this.state.query}
+                                onChange={(event) => this.handleChangeQuery(event)}
+                            />
                         </div>
                     </div>
                     <button onClick={this.showSelfStocks}>ストック</button>

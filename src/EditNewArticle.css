@@ -2,6 +2,7 @@
 /* |HEADER| */
 /* -------- */
 .EditNewArticle{
+    box-sizing: border-box;
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
@@ -14,7 +15,6 @@
 }
 
 .EditNewArticleHeader input[type='text']{
-    box-sizing: border-box;
     transition: 0.2s;
     padding-left: 0.3rem;
     letter-spacing: 1px;
@@ -60,6 +60,9 @@
 }
 
 textarea{
+    padding-left: 1vw;
+    padding-right: 1vw;
+
     font-size: 1.5rem;
     border-radius: 5px;
     /* margin: 2%; */
@@ -99,8 +102,10 @@ h2{
     margin-bottom: 0.7vh;
 }
 p, ul, li, h3, h4, h5, h6{
-    margin-top: 0.3vh;
-    margin-bottom: 0.3vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
 }
 
 
