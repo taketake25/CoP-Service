@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import autoBind from 'react-autobind';
-import './Article.css';
+import './ArticleList.css';
 const mysql = require("mysql");
 
-// ↓この情報は別の.gitignoreされたファイルから取得すること
+const config = require('./config');
+
 const connection = mysql.createConnection({
-    host: "localhost",
-    user: "username",
-    password: "password",
-    database: "D-PENS",
+    host: config.server,
+    user: config.username,
+    password: config.password,
+    database: config.database,
 });
 
 
@@ -34,14 +35,14 @@ class ArticleList extends Component {
         });
     }
     render() {
-        // let {
-        //     text,
-        //     markedLines
-        // } = this.state;
+
         return (
             <div className="ArticleList">
                 <div className="ArticleListHeader">
-
+                    <div className="ArticleListCategory">
+                        ここの文章を検索内容によって変えたい．
+                        {this.state.text}
+                    </div>
                 </div>
                 <div className="ArticleListBody">
                     {/* 10個分の記事のカードを表示 */}
