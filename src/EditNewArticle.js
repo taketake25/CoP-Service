@@ -43,57 +43,56 @@ class EditNewArticle extends Component {
 
     render() {
         return (
-            <div className="EditNewArticle">
+            <div>
                 <PageHeader />
+                <div className="EditNewArticle">
 
-                {/* タイトルやタグを記入する部分 */}
-                <div className="EditNewArticleHeader">
-                    <div className="EditNewArticleHeaderTitle">
-                        <label>
-                            タイトル
+                    {/* タイトルやタグを記入する部分 */}
+                    <div className="EditNewArticleHeader">
+                        <div className="EditNewArticleHeaderTitle">
                             <input
                                 type="text"
+                                placeholder="Title"
+                                value={this.state.query}
+                                onChange={(event) => this.handleChangeSubmit(event)}
+                            />
+                        </div>
+                        {/* ドロップダウンから選択する方法にする．というかあとで実装する */}
+                        <div className="EditNewArticleHeaderTag">
+                            <input type="text" placeholder="Tags" value={this.state.query}
+                                onChange={(event) => this.handleChangeSubmit(event)} />
+                        </div>
+                    </div>
+
+                    {/* メインの文章を記入する部分 */}
+                    <div className="EditNewArticleBody">
+
+                        {/* 文章の太字や画像の設定をする場所． 後で実装する */}
+                        {/* <div className="EditNewArticleBodyOption"></div> */}
+                        <div className="EditNewArticleBodyEditor">
+                            <label>
+                                本文
+                            <input
+                                    type="text"
+                                    value={this.state.text}
+                                    onChange={(event) => this.handleChangeText(event)}
+                                />
+                            </label>
+                        </div>
+                        <div className="EditNewArticleBodyPreview">
+
+                        </div>
+                    </div>
+                    <div className="EditNewArticleFooter">
+                        <label>
+                            投稿
+                            <input
+                                type="submit"
                                 value={this.state.query}
                                 onChange={(event) => this.handleChangeSubmit(event)}
                             />
                         </label>
                     </div>
-                    {/* ドロップダウンから選択する方法にする．というかあとで実装する */}
-                    {/* <div className="EditNewArticleHeaderTag">
-                        <label>タグ
-                            <input type="text" value={this.state.query} onChange={(event) => this.handleChangeSubmit(event)}/>
-                        </label>
-                    </div> */}
-                </div>
-
-                {/* メインの文章を記入する部分 */}
-                <div className="EditNewArticleBody">
-
-                    {/* 文章の太字や画像の設定をする場所． 後で実装する */}
-                    {/* <div className="EditNewArticleBodyOption"></div> */}
-                    <div className="EditNewArticleBodyEditor">
-                        <label>
-                            タグ
-                            <input
-                                type="text"
-                                value={this.state.text}
-                                onChange={(event) => this.handleChangeText(event)}
-                            />
-                        </label>
-                    </div>
-                    <div className="EditNewArticleBodyPreview">
-
-                    </div>
-                </div>
-                <div className="EditNewArticleFooter">
-                    <label>
-                        投稿
-                            <input
-                            type="submit"
-                            value={this.state.query}
-                            onChange={(event) => this.handleChangeSubmit(event)}
-                        />
-                    </label>
                 </div>
             </div>
         );

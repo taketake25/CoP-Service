@@ -1,0 +1,55 @@
+.EditNewArticle{
+    padding-top: 2rem;
+}
+  
+.EditNewArticleHeader{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    display: inherit;
+    text-align: center;  
+}
+
+.EditNewArticleHeader input[type='text']{
+    box-sizing: border-box;
+    transition: 0.2s;
+    padding-left: 0.3rem;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 95vw;
+    margin: 0.2rem;
+    font-size: 1.5rem;
+}
+/* #eb8510; */
+
+.EditNewArticleHeader input[type='text']:focus{
+    border: 1px solid #32a5c5;
+    outline: none;
+    box-shadow: 0 0 5px 2px #32a5c5;
+}
+
+.EditNewArticleHeaderTag{
+    display: inline-block;
+    text-align: center;  
+}
+
+.EditNewArticleHeaderTitle{
+    display: inline-block;
+    text-align: center;  
+}
+
+.EditNewArticleBody{
+
+}
+
+.EditNewArticleBodyEditor{
+
+}
+
+.EditNewArticleBodyPreview{
+
+}
+
+.EditNewArticleFooter{
+
+}

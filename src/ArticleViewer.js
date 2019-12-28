@@ -51,7 +51,7 @@ class ArticleViewer extends Component {
 }
 
 
-const imagePath = "./image.png"
+const imagePath = "./image3.png"
 class ArticleBody extends Component {
     constructor(props) {
         super(props)
