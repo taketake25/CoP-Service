@@ -58,7 +58,7 @@ class ArticleList extends Component {
 }
 
 
-const imagePath = "./image.png"
+const imagePath = "./image3.png"
 class ArticleCard extends Component {
     constructor(props) {
         super(props)

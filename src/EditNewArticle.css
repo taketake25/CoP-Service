@@ -1,5 +1,9 @@
+/* -------- */
+/* |HEADER| */
+/* -------- */
 .EditNewArticle{
     padding-top: 2rem;
+    padding-bottom: 2rem;
 }
   
 .EditNewArticleHeader{
@@ -16,7 +20,7 @@
     letter-spacing: 1px;
     border-radius: 5px;
     border: 1px solid black;
-    width: 95vw;
+    width: 96vw;
     margin: 0.2rem;
     font-size: 1.5rem;
 }
@@ -38,18 +42,84 @@
     text-align: center;  
 }
 
-.EditNewArticleBody{
 
+/* -------- */
+/* | BODY | */
+/* -------- */
+.EditNewArticleBody{
+    display: absolute;
+    box-sizing: border-box;
+    border: solid 1px black;
+    width: 100%;
+    height: 100%;
+
+    /* margin-left: 2vw;
+    margin-right: 2vw; */
+    font-size: 1.5rem;
+    font-weight: bold;  
+}
+
+textarea{
+    font-size: 1.5rem;
+    border-radius: 5px;
+    /* margin: 2%; */
+    resize: none;
+    width: 95%; 
+    /* height: calc(96vh - 13rem); */
+    height: 100%;
 }
 
 .EditNewArticleBodyEditor{
-
+    box-sizing: border-box;
+    width: 50%;
+    height: calc(100vh - 12rem);
+    display: inline-block;
+    /* padding: 1%; */
 }
 
 .EditNewArticleBodyPreview{
-
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: solid 1px black;
+    width: 50%;
+    height: calc(100vh - 12rem);
+    display: inline-block;
+    overflow-y: auto;
+    /* overflow-y: scroll; */
+    /* padding: 2rem; */
 }
 
-.EditNewArticleFooter{
 
+h1{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+h2{
+    margin-top: 0.7vh;
+    margin-bottom: 0.7vh;
+}
+p, ul, li, h3, h4, h5, h6{
+    margin-top: 0.3vh;
+    margin-bottom: 0.3vh;
+}
+
+
+/* -------- */
+/* |FOOTER| */
+/* -------- */
+.EditNewArticleFooter{
+    position: fixed;
+    width: 100%;
+    height: 2rem;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgb(46, 46, 43);  /* 将来的に背景は透明度のある写真に変えたい */
+    display: inline-flex;
+    /* 並べるときに間に自動的に空白を入れて整列してくれる      */
+    justify-content: flex-end; 
+    color: white;
+}
+
+.EditNewArticleFooter input{
+    margin-right: 1rem;
 }

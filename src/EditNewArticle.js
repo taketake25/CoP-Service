@@ -3,6 +3,8 @@ import autoBind from 'react-autobind';
 import './EditNewArticle.css';
 import { withRouter } from 'react-router';
 import PageHeader from './PageHeader';
+import marked from 'marked';
+import sanitize from 'sanitize-html';
 
 
 const mysql = require("mysql");
@@ -21,7 +23,7 @@ class EditNewArticle extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            text: '',
+            text: " ",
             markedLines: [],
             submit: false
         }
@@ -30,10 +32,8 @@ class EditNewArticle extends Component {
         this.handleChangeSubmit = this.handleChangeSubmit.bind(this);
     }
 
-    handleChangeText(e) {
-        this.setState({
-
-        });
+    handleChangeText(event) {
+        this.setState({ text: event.target.value });
     }
     handleChangeSubmit(e) {
         this.setState({
@@ -59,7 +59,7 @@ class EditNewArticle extends Component {
                         </div>
                         {/* ドロップダウンから選択する方法にする．というかあとで実装する */}
                         <div className="EditNewArticleHeaderTag">
-                            <input type="text" placeholder="Tags" value={this.state.query}
+                            <input type="text" placeholder="Tags   デザインは後でなおす" value={this.state.query}
                                 onChange={(event) => this.handleChangeSubmit(event)} />
                         </div>
                     </div>
@@ -70,17 +70,14 @@ class EditNewArticle extends Component {
                         {/* 文章の太字や画像の設定をする場所． 後で実装する */}
                         {/* <div className="EditNewArticleBodyOption"></div> */}
                         <div className="EditNewArticleBodyEditor">
-                            <label>
-                                本文
-                            <input
-                                    type="text"
-                                    value={this.state.text}
-                                    onChange={(event) => this.handleChangeText(event)}
-                                />
-                            </label>
+                            <textarea
+                                value={this.state.text}
+                                onChange={this.handleChangeText}
+                            />
                         </div>
                         <div className="EditNewArticleBodyPreview">
-
+                            <div dangerouslySetInnerHTML={{ __html: marked(this.state.text) }}>
+                            </div>
                         </div>
                     </div>
                     <div className="EditNewArticleFooter">
