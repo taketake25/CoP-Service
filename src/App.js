@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
-  Switch, Route, Link, useRouteMatch, useParams
+  Route, Link,
 } from "react-router-dom";
 
 import Home from './Home';
@@ -22,15 +22,15 @@ function App() {
           <Route path="/EditNewArticle" component={EditNewArticle} />
           <Route path="/login" component={EditNewArticle} />
         </switch>
+        <div>
+          <ul>
+            <Link to="/">Home  </Link>
+            <Link to="/ArticleViewer">ArticleViewer  </Link>
+            <Link to="/EditNewArticle">EditNewArticle  </Link>
+            <Link to="/login">login  </Link>
+          </ul>
+        </div>
       </Router>
-      {/* <div>
-        <ul>
-          <Link to="/">Home  </Link>
-          <Link to="/ArticleViewer">ArticleViewer  </Link>
-          <Link to="/EditNewArticle">EditNewArticle  </Link>
-          <Link to="/login">login  </Link>
-        </ul>
-      </div> */}
 
       {/* <div className="App">
         <header className="App-header">

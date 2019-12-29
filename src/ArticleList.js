@@ -85,7 +85,7 @@ class ArticleCard extends Component {
             <div className="ArticleCard">
                 <div className="ArticleMetaData">
                     <img style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='user imaga' />
-                    <div className="ArticleCardTitle">記事のタイトルやでな</div>
+                    <div className="ArticleCardTitle"><a href="/ArticleViewer" style={{}}>記事のタイトルやでな</a></div>
                     <div className="ArticleCardDay">2019/12/25 18:51</div>
                 </div>
                 <div className="ArticleTag">記事のタグがここに来るんやで</div>

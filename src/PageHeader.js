@@ -4,7 +4,6 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import './Home.css';
 
-
 class PageHeader extends Component {
     constructor(props) {
         super(props)
@@ -40,7 +39,9 @@ class PageHeader extends Component {
     render() {
         return (
             <div className="PageHeader">
-                <div className="ServiceTitle">D-PENS</div>
+                <div className="ServiceTitle">
+                    <a href="/" style={{}}>D-PENS</a>
+                </div>
                 <div className="PageHeaderButtons">
                     <div className="SearchArticle">
                         <div>

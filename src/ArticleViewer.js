@@ -5,14 +5,12 @@ import { withRouter } from 'react-router';
 import './ArticleViewer.css';
 import PageHeader from './PageHeader';
 
-const mysql = require("mysql");
-// ↓この情報は別の.gitignoreされたファイルから取得すること
-const connection = mysql.createConnection({
-    host: "localhost",
-    user: "username",
-    password: "password",
-    database: "D-PENS",
-});
+// const mysql = require("mysql");
+// const util = require('util');
+// const http = require('http');
+// const fs = require('fs');
+
+// const config = require('./config');
 
 
 class ArticleViewer extends Component {
@@ -23,6 +21,24 @@ class ArticleViewer extends Component {
             markedLines: []
         }
         autoBind(this);
+
+        // const connection = mysql.createConnection({
+        //     host: config.server,
+        //     user: config.username,
+        //     password: config.password,
+        //     database: config.database,
+        // });
+        // connection.connect();
+        // var insert_command = "INSERT INTO users (user_name, password) VALUES ('ttyo','b')";
+        // // userdataの取得
+        // connection.query('SELECT * from users;', function (err, rows, fields) {
+        //     if (err) { console.log('err: ' + err); }
+        //     for (var i = 0; i < rows.length; i++) {
+        //         console.log('id: ' + rows[i].user_id + '  name: ' + rows[i].user_name);
+        //     }
+        // });
+        // connection.end();
+        console.log('');
     }
 
     render() {
@@ -37,7 +53,7 @@ class ArticleViewer extends Component {
                 <div className="ArticleViewer">
                     <div className="ArticleViewerHeader">
                         Headerやで
-                </div>
+                    </div>
 
                     <ArticleBody />
 

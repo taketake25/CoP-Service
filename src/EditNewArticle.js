@@ -4,7 +4,7 @@ import './EditNewArticle.css';
 import { withRouter } from 'react-router';
 import PageHeader from './PageHeader';
 import marked from 'marked';
-import sanitize from 'sanitize-html';
+// import sanitize from 'sanitize-html';
 
 
 const mysql = require("mysql");
@@ -37,6 +37,7 @@ class EditNewArticle extends Component {
         this.setState({ text: event.target.value });
     }
     handleChangeSubmit(e) {
+        // ファイルの保存について追加する
         this.setState({
             submit: "True"
         });
