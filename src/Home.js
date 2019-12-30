@@ -64,24 +64,62 @@ function HomeBody(props) {
     );
 }
 
-function UserRanking(props) {
-    // 後で実装する
-    return (
-        <div className='UserRanking'>
-            <p>UserRanking</p>
-        </div>
-    );
+class UserRanking extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            user: [{
+                user_id: 0,
+                user_name: "",
+                user_password: "",
+                user_image: "",
+                user_point: 0
+            }],
+        };
+
+        fetch("http://192.168.0.13:4000/user")
+            .then(response => response.json())
+            .then(user => this.setState({ user }));
+    }
+
+    render() {
+        const users = [];
+        for (var i = 0; i < this.state.user.length; i++) {
+            users.push(<p>{i + 1}. {this.state.user[i].user_name}</p>);
+        }
+        return (
+            <div className='UserRanking'>
+                <p>UserRanking</p>
+                {users}
+            </div>
+        );
+    }
 }
 
 class CategoryList extends Component {
     // 後で実装する
     constructor(props) {
         super(props)
+        this.state = {
+            tags: [{
+                tag_id: 0,
+                tag_name: ""
+            }]
+        };
+
+        fetch("http://192.168.0.13:4000/tags")
+            .then(response => response.json())
+            .then(tags => this.setState({ tags }));
     }
     render() {
+        const Categorys = [];
+        for (var i = 0; i < this.state.tags.length; i++) {
+            Categorys.push(<p>{i + 1}. {this.state.tags[i].tag_name}</p>);
+        }
         return (
             <div className="Category">
                 <p>Category</p>
+                {Categorys}
             </div>
         );
     }

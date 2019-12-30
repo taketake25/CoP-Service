@@ -157,14 +157,14 @@ button{
   text-align: center;
   border-right: double 5px #4fd2e4;
   border-left: double 5px #4fd2e4;
-
+  margin-bottom: 1rem;
 }
 
 .Category{
   text-align: center;
   border-right: double 5px #4fd2e4;
   border-left: double 5px #4fd2e4;
-  
+  margin-bottom: 1rem;
 }
 
 .HomeFooter{
