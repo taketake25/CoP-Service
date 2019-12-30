@@ -1,0 +1,33 @@
+.auth{
+    display: flex;
+    padding-top: 2rem;
+    /* height: calc(100% - 2rem); */
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.signin{
+    height: max-content;
+    font-size: 2rem;
+    display: inline-block;
+}
+
+.login{
+    height: max-content;
+    font-size: 2rem;
+    display: inline-block;
+
+}
+
+.auth input[type="text"]{
+    font-size: 1.5rem;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.auth button{
+    display: inline-block;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}

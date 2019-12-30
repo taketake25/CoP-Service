@@ -6,19 +6,6 @@ import PageHeader from './PageHeader';
 import marked from 'marked';
 // import sanitize from 'sanitize-html';
 
-
-const mysql = require("mysql");
-const config = require('./config');
-
-const connection = mysql.createConnection({
-    host: config.server,
-    user: config.username,
-    password: config.password,
-    database: config.database,
-});
-
-
-
 class EditNewArticle extends Component {
     constructor(props) {
         super(props)

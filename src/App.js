@@ -8,6 +8,7 @@ import {
 import Home from './Home';
 import ArticleViewer from './ArticleViewer';
 import EditNewArticle from './EditNewArticle';
+import authentication from './authentication';
 import './Home.css';
 import './App.css';
 
@@ -20,14 +21,14 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/ArticleViewer" component={ArticleViewer} />
           <Route path="/EditNewArticle" component={EditNewArticle} />
-          <Route path="/login" component={EditNewArticle} />
+          <Route path="/auth" component={authentication} />
         </switch>
         <div>
           <ul>
             <Link to="/">Home  </Link>
             <Link to="/ArticleViewer">ArticleViewer  </Link>
             <Link to="/EditNewArticle">EditNewArticle  </Link>
-            <Link to="/login">login  </Link>
+            <Link to="/auth">authentication  </Link>
           </ul>
         </div>
       </Router>
