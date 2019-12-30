@@ -11,7 +11,8 @@ class authentication extends Component {
         this.state = {
             // reduxによるデータ保存をしたい．
             user_name: "",
-            user_password: ""
+            user_password: "",
+            alert: ""
         }
         autoBind(this);
         this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -27,23 +28,25 @@ class authentication extends Component {
         this.setState({ user_password: event.target.value });
     }
     handleSubmit(e) {
-        // ファイルの保存について追加する
-        this.setState({
-            submit: "True"
-        });
+        this.setState({ submit: "True" });
     }
     handleSigninSubmit(e) {
         let new_user = {
             user_name: this.state.user_name,
             user_password: this.state.user_password,
         };
-        fetch("http://192.168.0.13:4000/user/create", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify(new_user)
-        });
+        if (this.state.user_name != "" && this.state.user_password != "") {
+            fetch("http://192.168.0.13:4000/user/create", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify(new_user)
+            });
+            this.props.history.push('/')
+        } else {
+            this.setState({ alert: "情報が入力されていません" })
+        }
     }
 
     render() {
@@ -52,7 +55,7 @@ class authentication extends Component {
                 <PageHeader />
                 <div className="auth">
                     <div className="signin">
-                        signin(メールアドレスがいらないからloginとの差別化が難しいンゴ...)
+                        signin(mailがないからloginとの差別化が...)
                         <input
                             type="text"
                             placeholder="input your user_name"
@@ -84,6 +87,7 @@ class authentication extends Component {
                         <button onClick={this.handleSubmit}>loginするで</button>
                     </div>
                 </div>
+                <div className="alert"><p>{this.state.alert} <br /></p></div>
             </div >
         );
     }

@@ -5,19 +5,20 @@
     justify-content: space-around;
     align-items: center;
     text-align: center;
+    align-content: center;
 }
 
 .signin{
+    /* align-self: auto; */
     height: max-content;
     font-size: 2rem;
-    display: inline-block;
+    display: inline-box;
 }
 
 .login{
     height: max-content;
     font-size: 2rem;
     display: inline-block;
-
 }
 
 .auth input[type="text"]{
@@ -30,4 +31,9 @@
     display: inline-block;
     font-size: 1.5rem;
     margin-top: 1rem;
+}
+
+.alert{
+    color: red;
+    font-size: 2rem;
 }

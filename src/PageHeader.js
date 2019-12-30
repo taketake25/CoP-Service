@@ -55,7 +55,7 @@ class PageHeader extends Component {
                     </div>
                     <button onClick={this.showSelfStocks}>ストック</button>
                     <button onClick={this.editNewArticle}>新規投稿</button>
-                    <div className="Account">アカウント</div>
+                    <div className="Account"><a href="/auth" style={{}}>アカウント</a></div>
                 </div>
             </div>
         );

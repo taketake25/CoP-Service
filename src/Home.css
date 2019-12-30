@@ -14,16 +14,23 @@
   width: 100%;
 }
 
-.ServiceTitle a{
-  font-size: 1.7rem;
+.PageHeader a{
   margin-left: 1rem;
-  color: #32a5c5;
+  margin-right: 1rem;
   vertical-align: middle;
   align-items: center;
   display: flex;
-  font-weight: bold;
-  text-decoration: none;
   cursor: pointer;
+}
+.Account a{
+  color: white;
+}
+
+.ServiceTitle a{
+  font-weight: bold;
+  font-size: 1.7rem;
+  color: #32a5c5;
+  text-decoration: none;
 }
 
 .PageHeaderButtons{
@@ -170,16 +177,4 @@ button{
 .HomeFooter{
   padding: 1rem;
   background-color: #32a5c5;
-}
-
-.App-textview{
-  display: inline-block;
-  margin-left: 1vw;
-  vertical-align: top;
-  width: 48%;
-  height: auto;
-}
-
-.Link {
-  color: #61dafb;
 }
