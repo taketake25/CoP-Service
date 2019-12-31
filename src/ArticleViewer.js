@@ -5,27 +5,6 @@ import { withRouter } from 'react-router';
 import './ArticleViewer.css';
 import PageHeader from './PageHeader';
 
-const mysql = require("mysql");
-const config = require('./config');
-
-// const connection = mysql.createConnection({
-//     host: config.server,
-//     user: config.username,
-//     password: config.password,
-//     database: config.database,
-// });
-// connection.connect();
-// var insert_command = "INSERT INTO users (user_name, password) VALUES ('ttyo','b')";
-// // userdataの取得
-// connection.query('SELECT * from users;', function (err, rows, fields) {
-//     if (err) { console.log('err: ' + err); }
-//     for (var i = 0; i < rows.length; i++) {
-//         console.log('id: ' + rows[i].user_id + '  name: ' + rows[i].user_name);
-//     }
-// });
-// connection.end();
-// console.log('');
-
 class ArticleViewer extends Component {
     constructor(props) {
         super(props)
@@ -34,15 +13,9 @@ class ArticleViewer extends Component {
             markedLines: []
         }
         autoBind(this);
-
-
     }
 
     render() {
-        // let {
-        //     text,
-        //     markedLines
-        // } = this.state;
         return (
             <div>
                 <PageHeader />

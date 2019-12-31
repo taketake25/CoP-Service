@@ -37,11 +37,13 @@ class Home extends Component {
 }
 
 function HomeHeader(props) {
+    const logo = "logo.png";
     return (
         <div className="HomeHeader">
             <div className="ServiceExplanation">
                 <div className="ServiceIdea">同志社エンジニア交流サイト</div>
-                <div className="ServiceLogo">D-PENS</div> {/* ロゴの画像にする */}
+                {/* <div className="ServiceLogo">D-PENS</div> ロゴの画像にする */}
+                <img src={logo} alt="ServiceLogo" /> {/* ロゴの画像にする */}
             </div>
             <div className="ServicePurpose">
                 D-PENSとは<br />

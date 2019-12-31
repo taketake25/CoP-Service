@@ -48,13 +48,13 @@
     margin-right: 2vw; */
 }
 
-input{
+.PageHeader input{
     cursor: pointer;
     display: inline-block;
     vertical-align: middle;
 }
 
-button{
+.PageHeader button{
     cursor: pointer;
     margin-left: 1rem; 
     margin-right: 1rem; 
@@ -102,6 +102,10 @@ button{
   white-space: nowrap;
   font-weight: bold;
   color: #32a5c5;
+}
+.ServiceExplanation img{
+  width: 18rem;
+  border-radius: 0%;
 }
 
 .ServiceIdea{
@@ -158,6 +162,10 @@ button{
   border-left: solid 2px black;
   display: inline-block;
   align-items: center;
+}
+.ArticleSide p{
+  margin-top: 0rem;
+  margin-bottom: 0rem;
 }
 
 .UserRanking{

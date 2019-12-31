@@ -11,23 +11,57 @@ class EditNewArticle extends Component {
         super(props)
         this.state = {
             text: "",
-            markedLines: [],
-            submit: false
+            article_title: "",
+            article_tags: "",
+            alert: ""
+            // markedLines: [],
+            // submit: false
         }
         autoBind(this);
         this.handleChangeText = this.handleChangeText.bind(this);
-        this.handleChangeSubmit = this.handleChangeSubmit.bind(this);
         marked.setOptions({ breaks: true });
+        this.handleChangeTitle = this.handleChangeTitle.bind(this);
+        this.handleChangeTags = this.handleChangeTags.bind(this);
+        this.handleChageSubmit = this.handleChangeSubmit.bind(this);
     }
 
     handleChangeText(event) {
         this.setState({ text: event.target.value });
     }
+    handleChangeTitle(event) {
+        this.setState({ article_title: event.target.value });
+    }
+    handleChangeTags(event) {
+        this.setState({ article_tags: event.target.value });
+    }
+
     handleChangeSubmit(e) {
-        // ファイルの保存について追加する
-        this.setState({
-            submit: "True"
-        });
+        // this.setState({ alert: "ボタンが押されました" })
+        if (this.state.article_title != "" && this.state.text != "") {
+            var time = new Date();
+            var date = time.getFullYear() + "-" + (time.getMonth() + 1) + "-" + time.getDate() + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+            var date2 = time.getFullYear() + "-" + (time.getMonth() + 1) + "-" + time.getDate() + "-" + time.getHours() + "-" + time.getMinutes() + "-" + time.getSeconds();
+            let new_article = {
+                article_title: this.state.article_title,
+                article_date: date,
+                article_date2: date2,
+                article_text: this.state.text,
+                // filenameに関してはexpress側で実装する
+                article_tag_id: 1, //あとで追加するんやでな
+                write_user_id: 1 //あとで実装するんやでな
+            };
+
+            fetch("http://192.168.0.13:4000/article/create", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify(new_article)
+            });
+            this.props.history.push('/');
+        } else {
+            this.setState({ alert: "情報が入力されていません" })
+        }
     }
 
     render() {
@@ -43,14 +77,14 @@ class EditNewArticle extends Component {
                                 type="text"
                                 placeholder="Title"
                                 value={this.state.query}
-                                onChange={(event) => this.handleChangeSubmit(event)}
+                                onChange={(event) => this.handleChangeTitle(event)}
                             />
                         </div>
                         {/* ドロップダウンから選択する方法にする．というかあとで実装する */}
                         <div className="EditNewArticleHeaderTag">
                             <input type="text"
                                 placeholder="Tags   デザインは後で 画像sanitize-html" value={this.state.query}
-                                onChange={(event) => this.handleChangeSubmit(event)} />
+                                onChange={(event) => this.handleChangeTags(event)} />
                         </div>
                     </div>
 
@@ -71,15 +105,9 @@ class EditNewArticle extends Component {
                             </div>
                         </div>
                     </div>
+                    {/* <p>{this.state.alert}</p> */}
                     <div className="EditNewArticleFooter">
-                        <label>
-                            投稿
-                            <input
-                                type="submit"
-                                value={this.state.query}
-                                onChange={(event) => this.handleChangeSubmit(event)}
-                            />
-                        </label>
+                        <button onClick={this.handleChangeSubmit}>投稿する</button>
                     </div>
                 </div>
             </div>
