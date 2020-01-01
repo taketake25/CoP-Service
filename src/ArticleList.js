@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import autoBind from 'react-autobind';
+import { withRouter } from 'react-router';
 import './ArticleList.css';
+import {
+    BrowserRouter as Router,
+    Route, Link,
+} from "react-router-dom";
+import ArticleViewer from './ArticleViewer';
 
 class ArticleList extends Component {
     constructor(props) {
@@ -42,17 +48,25 @@ class ArticleList extends Component {
                 <ArticleCard article={this.state.article[i]} />
             )
         }
-        // <ArticleCard article_title={this.state.user[0].user_name} />
+        const dates = [];
+        for (var i = 0; i < this.state.article.length; i++) {
+            dates.push(
+                <Route path={`/ArticleViewer/:article_id`} component={ArticleViewer}
+                    render={props => <ArticleViewer {...props} article={this.state.article[i]} />} />
+            )
+        }
 
         return (
-            <div className="ArticleList">
+            <div className="ArticleList" >
+                <Router>
+                    {dates}
+                </Router>
                 <div className="ArticleListHeader">
                     <div className="ArticleListCategory">
-                        ここの文章を検索内容によって変えたい．
+                        みんなの記事だよ～
                     </div>
                 </div>
                 <div className="ArticleListBody">
-                    {/* 10個分の記事のカードを表示 */}
                     {cards}
                 </div>
                 <div className="ArticleListFooter">
@@ -70,7 +84,6 @@ class ArticleCard extends Component {
         super(props)
         this.state = {
             article_title: "",
-            markedLines: []
         }
         autoBind(this)
     }
@@ -79,16 +92,16 @@ class ArticleCard extends Component {
             <div className="ArticleCard">
                 <div className="ArticleMetaData">
                     <img style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='user image' />
-                    <div className="ArticleCardTitle"><a href="/ArticleViewer" style={{}}>{this.props.article.article_title}</a></div>
+                    <div className="ArticleCardTitle"><a href={`/ArticleViewer/${this.props.article.article_id}`} style={{}}>{this.props.article.article_title}</a></div>
                     <div className="ArticleCardDay">{this.props.article.article_date}</div>
                 </div>
                 <div className="ArticleTag">{this.props.article.article_tag_id}</div>
                 <div className="ArticleCardAgenda">
-                    {this.props.article.article_filename}.txtをhtmlにdangerな方法で変換するんやで．
+                    {this.props.article.article_filename}をhtmlにdangerな方法で変換するんやで．
                 </div>
             </div>
         );
     }
 }
 
-export default ArticleList;
+export default withRouter(ArticleList);

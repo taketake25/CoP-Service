@@ -19,7 +19,8 @@ function App() {
       <Router>
         <switch>
           <Route exact path="/" component={Home} />
-          <Route path="/ArticleViewer" component={ArticleViewer} />
+          <Route exact path="/ArticleViewer" component={ArticleViewer} />
+          <Route path="/ArticleViewer/:article_id" component={ArticleViewer} />
           <Route path="/EditNewArticle" component={EditNewArticle} />
           <Route path="/auth" component={authentication} />
         </switch>

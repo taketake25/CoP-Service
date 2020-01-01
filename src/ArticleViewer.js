@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import autoBind from 'react-autobind';
 import { withRouter } from 'react-router';
-
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import './ArticleViewer.css';
 import PageHeader from './PageHeader';
 
@@ -10,25 +10,25 @@ class ArticleViewer extends Component {
         super(props)
         this.state = {
             text: '',
-            markedLines: []
+            article_id: this.props.match.params,
+            article: []
         }
         autoBind(this);
+        ARTICLE.find(this.props.article => this.props.article_id === article_id)
+        // ~~の中にArticleList.jsのarticleの配列が入る．
     }
 
     render() {
         return (
             <div>
                 <PageHeader />
-
                 <div className="ArticleViewer">
                     <div className="ArticleViewerHeader">
                         Headerやで
+                        {/* 隠れてしまっているのでpaddingを修正する */}
                     </div>
-
-                    <ArticleBody />
-
+                    <ArticleBody article={this.state.article} />
                     <div className="ArticleViewerFooter">
-
                     </div>
                 </div>
             </div>
@@ -43,30 +43,19 @@ class ArticleBody extends Component {
         super(props)
         this.state = {
             text: '',
-            markedLines: []
+            article: this.props.article
         }
         autoBind(this)
-        this.handleClick = this.handleClick.bind(this);
-        this.handleChangeQuery = this.handleChangeQuery.bind(this);
-    }
-    handleClick(e) {
-        this.setState(
-            { b: !this.state.a }
-        );
-    }
-    handleChangeQuery(e) {
-        this.setState({
-            query: "query text"
-        });
+        console.log(JSON.stringify(this.props.article))
     }
     render() {
         return (
             <div className="ArticleCard">
-
+                {this.state.article.article_id}
                 <div className="ArticleMetaData">
                     <img style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='user imaga' />
-                    <div className="ArticleCardTitle">記事のタイトルやでな</div>
-                    <div className="ArticleCardDay">2019/12/25 18:51</div>
+                    <div className="ArticleCardTitle">{this.state.article.article_title}</div>
+                    <div className="ArticleCardDay">{this.state.article.article_date}</div>
                 </div>
                 <div className="ArticleTag">記事のタグがここに来るんやで</div>
                 <div className="ArticleCardAgenda">
