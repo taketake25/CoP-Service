@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import autoBind from 'react-autobind';
-import { withRouter } from 'react-router';
+// import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
 import './ArticleList.css';
 import {
-    BrowserRouter as Router,
-    Route, Link,
+    BrowserRouter as Router, Route,
 } from "react-router-dom";
 import ArticleViewer from './ArticleViewer';
 
-class ArticleList extends Component {
+export default class ArticleList extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -27,8 +28,8 @@ class ArticleList extends Component {
                 article_filename: "",
                 write_user_id: 0,
                 article_tag_id: 0
-            }]
-
+            }],
+            count: 0,
         };
         autoBind(this)
 
@@ -49,7 +50,7 @@ class ArticleList extends Component {
             )
         }
         const dates = [];
-        for (var i = 0; i < this.state.article.length; i++) {
+        for (i = 0; i < this.state.article.length; i++) {
             dates.push(
                 <Route path={`/ArticleViewer/:article_id`} component={ArticleViewer}
                     render={props => <ArticleViewer {...props} article={this.state.article[i]} />} />
@@ -91,7 +92,7 @@ class ArticleCard extends Component {
         return (
             <div className="ArticleCard">
                 <div className="ArticleMetaData">
-                    <img style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='user image' />
+                    <image style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='user image' />
                     <div className="ArticleCardTitle"><a href={`/ArticleViewer/${this.props.article.article_id}`} style={{}}>{this.props.article.article_title}</a></div>
                     <div className="ArticleCardDay">{this.props.article.article_date}</div>
                 </div>
@@ -104,4 +105,3 @@ class ArticleCard extends Component {
     }
 }
 
-export default withRouter(ArticleList);

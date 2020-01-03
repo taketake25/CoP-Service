@@ -14,7 +14,7 @@ class ArticleViewer extends Component {
             article: []
         }
         autoBind(this);
-        ARTICLE.find(this.props.article => this.props.article_id === article_id)
+        // ARTICLE.find(this.props.article => this.props.article_id === article_id)
         // ~~の中にArticleList.jsのarticleの配列が入る．
     }
 

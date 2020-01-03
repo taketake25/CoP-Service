@@ -10,7 +10,6 @@ import ArticleViewer from './ArticleViewer';
 import EditNewArticle from './EditNewArticle';
 import authentication from './authentication';
 import './Home.css';
-import './App.css';
 
 
 function App() {

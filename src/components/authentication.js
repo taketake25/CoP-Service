@@ -35,7 +35,7 @@ class authentication extends Component {
             user_name: this.state.user_name,
             user_password: this.state.user_password,
         };
-        if (this.state.user_name != "" && this.state.user_password != "") {
+        if (this.state.user_name !== "" && this.state.user_password !== "") {
             fetch("http://192.168.0.13:4000/user/create", {
                 method: "POST",
                 headers: {
