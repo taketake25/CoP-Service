@@ -1,7 +1,7 @@
-export const inputTask = (task) => ({
-    type: 'TASK',
+export const inputArticles = (articles) => ({
+    type: 'INPUTARTICLES',
     payload: {
-        task
+        articles
     }
 });
 

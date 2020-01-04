@@ -3,6 +3,7 @@ import autoBind from 'react-autobind';
 import { withRouter } from 'react-router';
 import './Home.css';
 import ArticleList from './ArticleList';
+// import ArticleList from '../containers/ArticleList';
 import PageHeader from './PageHeader';
 
 class Home extends Component {

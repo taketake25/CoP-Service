@@ -1,17 +1,18 @@
 const initialState = {
-    task: '',
-    tasks: []
+    articles: [],
 };
 
-export default function tasksReducer(state = initialState, action) {
+export default function articleReducer(state = initialState, action) {
     switch (action.type) {
-        case 'TASK':
+        case 'INPUTARTICLES':
             return {
                 ...state,
-                task: action.payload.task
+                articles: action.payload.articles
             };
         case 'INCREMENT':
-            return {};
+            return state;
+        case 'DECREMENT':
+            return state;
 
         default:
             return state;

@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import autoBind from 'react-autobind';
-// import { withRouter } from 'react-router';
-import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import './ArticleList.css';
 import {
     BrowserRouter as Router, Route,
 } from "react-router-dom";
 import ArticleViewer from './ArticleViewer';
+// import { inputArticles, increment, decrement } from "../actions/tasks";
 
-export default class ArticleList extends Component {
+class ArticleList extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -38,8 +37,11 @@ export default class ArticleList extends Component {
             .then(user => this.setState({ user }));
 
         fetch("http://192.168.0.13:4000/article")
+            // .then(response => console.log(response))
             .then(response => response.json())
             .then(article => this.setState({ article }));
+        // .then(article => console.log(article));
+
     }
 
     render() {
@@ -56,6 +58,7 @@ export default class ArticleList extends Component {
                     render={props => <ArticleViewer {...props} article={this.state.article[i]} />} />
             )
         }
+        // inputArticles(this.state.article);
 
         return (
             <div className="ArticleList" >
@@ -79,7 +82,7 @@ export default class ArticleList extends Component {
 }
 
 
-const imagePath = "./image3.png"
+const imagePath = "image3.png"
 class ArticleCard extends Component {
     constructor(props) {
         super(props)
@@ -92,16 +95,27 @@ class ArticleCard extends Component {
         return (
             <div className="ArticleCard">
                 <div className="ArticleMetaData">
-                    <image style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='user image' />
+                    <img style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='user image' />
                     <div className="ArticleCardTitle"><a href={`/ArticleViewer/${this.props.article.article_id}`} style={{}}>{this.props.article.article_title}</a></div>
                     <div className="ArticleCardDay">{this.props.article.article_date}</div>
                 </div>
                 <div className="ArticleTag">{this.props.article.article_tag_id}</div>
                 <div className="ArticleCardAgenda">
-                    {this.props.article.article_filename}をhtmlにdangerな方法で変換するんやで．
+                    {this.props.article.article_filename}をhtmlにdangerな方法で変換するんやで．<br />
+                    合計4行の文章をagendaとして出力するんやで<br />
+                    でも，10個分のCardのテキストを出力すると，constructorでの実行が間に合わないので，困ってるんやわ．<br />
+                    ということで，<br />
+                    4行のテストを終了するで．
                 </div>
             </div>
         );
     }
 }
 
+// ArticleList.propTypes = {
+//     articles: PropTypes.array,
+//     increment: PropTypes.func.isRequired,
+//     decrement: PropTypes.func.isRequired,
+// };
+
+export default withRouter(ArticleList);

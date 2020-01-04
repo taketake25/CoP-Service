@@ -2,17 +2,13 @@ import { connect } from 'react-redux';
 import { increment, decrement } from "../actions/tasks";
 import ArticleList from "../components/ArticleList";
 
-ArticleList.propTypes = {
-    count: PropTypes.number,
-    articles: PropTypes.array,
-    // increment: PropTypes.func.isRequired,
-    // decrement: PropTypes.func.isRequired,
+function mapStateToProps({ articles }) {
+    return {
+        articles: articles.article,
+        articles_id: articles.article_id,
+        articles_id: articles.article_id,
+    };
 }
-
-const mapStateToProps = state => ({
-    count: state.count,
-    articles: state.article,
-});
 
 const mapDispatchToProps = dispatch => ({
     increment: () => dispatch(increment()),
