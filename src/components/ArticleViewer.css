@@ -1,9 +1,9 @@
-img{
+/* img{
     width: 1em;
     padding: 0.2em;
     border-radius: 50%;
     display: inline-block;
-}
+} */
 .ArticleViewer{
     /* box-sizing: border-box; */
     padding-top: 2rem;
@@ -16,10 +16,10 @@ img{
     padding: 1em;
 }
 
-.ArticleCard{
+.ArticleViewer .ArticleCard{
     margin: 1em;
+    padding: 1rem;
     height: auto;
-    padding: 1em;
     border-radius: 10px 10px 10px 10px;
     /* border-top: solid 1px black; */
     border-right: double 5px #4fd2e4;
@@ -33,9 +33,9 @@ img{
     align-items: center;
     display: flex;
     justify-content: space-between; 
-    font-size: 1.2em;
 }
 .ArticleCardTitle{
+    font-size: 1.5em;
     display: inline-block;
 }
 .ArticleCardDay{
@@ -52,19 +52,19 @@ img{
     height: auto;
 }
 .ArticleText h1{
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     margin-top: 0.5vh;
     margin-bottom: 0.5vh;
     text-decoration: underline;
 }
 .ArticleText h2{
     /* text-decoration: solid; */
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     margin-top: 0vh;
     margin-bottom: 0vh;
 }
 .ArticleText p, ul, li, h3, h4, h5, h6{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-left: 1vw;
     margin-right: 1vw;
     margin-top: -0.5vh;
@@ -102,7 +102,7 @@ img{
 }
 .CommentUserInfo img{
     margin-left: 4%;
-    width: 1em;
+    width: 0.7em;
     padding: 0.2em;
     border-radius: 50%;
     display: block;
@@ -110,7 +110,7 @@ img{
 
 .UserName{
     margin-left: 4%;
-    font-size: 1.2rem;
+    font-size: 1rem;
     display: block;
 }
 .CommentText{
@@ -131,6 +131,7 @@ img{
 
 .SendComment textarea{
     width: 96%;
+    font-size: 1.2rem;
     height: calc(1.6rem * 3);
     resize: none;
     /* overflow-y: scroll; */

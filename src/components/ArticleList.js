@@ -97,9 +97,9 @@ class ArticleCard extends Component {
         return (
             <div className="ArticleCard">
                 <div className="ArticleMetaData">
-                    <img style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='user image' />
+                    <img style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='image' />
                     <div className="ArticleCardTitle"><a href={`/ArticleViewer/${this.props.article.article_id}`} style={{}}>{this.props.article.article_title}</a></div>
-                    <div className="ArticleCardDay">{this.props.article.article_date}</div>
+                    <div className="ArticleCardDay">{this.props.article.article_date.substr(0, 10)}</div>
                 </div>
                 <div className="ArticleTag">{this.props.article.article_tag_id}</div>
                 {/* <div className="ArticleCardAgenda">

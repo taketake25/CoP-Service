@@ -95,19 +95,19 @@
 }
 
 .EditNewArticleBody h1{
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     margin-top: 0.5vh;
     margin-bottom: 0.5vh;
     text-decoration: underline;
 }
 .EditNewArticleBody h2{
     /* text-decoration: solid; */
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     margin-top: 0vh;
     margin-bottom: 0vh;
 }
 .EditNewArticleBody p, ul, li, h3, h4, h5, h6{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-left: 1vw;
     margin-right: 1vw;
     margin-top: -0.5vh;

@@ -20,7 +20,7 @@ class ArticleViewer extends Component {
             article_id: this.props.match.params,
             // このjsonの内容をちょっと整理したい．
             articles: [{
-                article_date: "undefined",
+                article_date: "",
                 article_filename: "undefined",
                 article_tag_id: 0,
                 article_text: "undefined",
@@ -85,17 +85,19 @@ class ArticleViewer extends Component {
         if (this.state.text !== "") {
             let new_comment = {
                 comment_user_id: 1,
+                comment_article_id: this.props.match.params.article_id,
                 message: this.state.text,
             };
 
-            fetch("http://192.168.0.13:4000/article/create", {
+            // fetch("http://192.168.0.13:4000/comment/create", {
+            fetch("http://172.20.11.121:4000/comment/create", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8'
                 },
                 body: JSON.stringify(new_comment)
             });
-            this.state.text('');
+            this.setState({ text: '' });
         } else {
             this.setState({ alert: "情報が入力されていません" })
         }
@@ -121,6 +123,8 @@ class ArticleViewer extends Component {
                 </div>
             )
         }
+
+
         return (
             <div>
                 <PageHeader />
@@ -132,7 +136,7 @@ class ArticleViewer extends Component {
 
                     <div className="ArticleCard">
                         <div className="ArticleMetaData">
-                            <img style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='user imaga' />
+                            <img style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='image' />
                             <div className="ArticleCardTitle">{this.state.articles.article_title}</div>
                             <div className="ArticleCardDay">{this.state.articles.article_date}</div>
                         </div>

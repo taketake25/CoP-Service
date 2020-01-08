@@ -12,10 +12,9 @@
     
 }
 
-.ArticleCard{
-    margin: 1em;
+.ArticleList .ArticleCard{
+    margin: 1rem;
     height: auto;
-    padding: 1em;
     border-radius: 10px 10px 10px 10px;
     /* border-top: solid 1px black; */
     border-right: double 5px #4fd2e4;
@@ -38,6 +37,7 @@
     font-size: 1.2em;
 }
 .ArticleCardTitle{
+    width: 70%;
     display: inline-block;
 }
 .ArticleCardDay{
