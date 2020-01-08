@@ -32,11 +32,13 @@ class ArticleList extends Component {
         };
         autoBind(this)
 
-        fetch("http://192.168.0.13:4000/user")
+        // fetch("http://192.168.0.13:4000/user")
+        fetch("http://172.20.11.121:4000/user")
             .then(response => response.json())
             .then(user => this.setState({ user }));
 
-        fetch("http://192.168.0.13:4000/article")
+        // fetch("http://192.168.0.13:4000/article")
+        fetch("http://172.20.11.121:4000/article")
             // .then(response => console.log(response))
             .then(response => response.json())
             .then(article => this.setState({ article }));
@@ -100,13 +102,13 @@ class ArticleCard extends Component {
                     <div className="ArticleCardDay">{this.props.article.article_date}</div>
                 </div>
                 <div className="ArticleTag">{this.props.article.article_tag_id}</div>
-                <div className="ArticleCardAgenda">
+                {/* <div className="ArticleCardAgenda">
                     {this.props.article.article_filename}をhtmlにdangerな方法で変換するんやで．<br />
                     合計4行の文章をagendaとして出力するんやで<br />
                     でも，10個分のCardのテキストを出力すると，constructorでの実行が間に合わないので，困ってるんやわ．<br />
                     ということで，<br />
                     4行のテストを終了するで．
-                </div>
+                </div> */}
             </div>
         );
     }

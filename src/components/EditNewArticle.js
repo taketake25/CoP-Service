@@ -27,6 +27,7 @@ class EditNewArticle extends Component {
 
     handleChangeText(event) {
         this.setState({ text: event.target.value });
+        console.log(event.target.value);
     }
     handleChangeTitle(event) {
         this.setState({ article_title: event.target.value });

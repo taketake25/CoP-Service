@@ -49,7 +49,10 @@ function HomeHeader(props) {
             <div className="ServicePurpose">
                 D-PENSとは<br />
                 <hr size="3" noshade />
-                「工学系の大学生だから，誰かと一緒にモノ作りを楽しみたい！」と思ったことはないでしょうか．でも，サークルやプロジェクトなどの特殊な環境に身を置いている人や，開発好きな友達がいないとなかなかチーム開発の機会はないですよね．だからといって，ほかの集団に気軽に遊びに行けるほどの度胸はないし...<br />
+                キャッチーな説明文を後で考え直すんやで<br />
+                フォント変えないとな<br />
+                背景に同志社っぽい写真を反映させたい<br />
+                {/* 「工学系の大学生だから，誰かと一緒にモノ作りを楽しみたい！」と思ったことはないでしょうか．でも，サークルやプロジェクトなどの特殊な環境に身を置いている人や，開発好きな友達がいないとなかなかチーム開発の機会はないですよね．だからといって，ほかの集団に気軽に遊びに行けるほどの度胸はないし...<br /> */}
             </div>
         </div>
     );
@@ -80,7 +83,8 @@ class UserRanking extends Component {
             }],
         };
 
-        fetch("http://192.168.0.13:4000/user")
+        // fetch("http://192.168.0.13:4000/user")
+        fetch("http://172.20.11.121:4000/user")
             .then(response => response.json())
             .then(user => this.setState({ user }));
     }
@@ -110,7 +114,8 @@ class CategoryList extends Component {
             }]
         };
 
-        fetch("http://192.168.0.13:4000/tags")
+        // fetch("http://192.168.0.13:4000/tags")
+        fetch("http://172.20.11.121:4000/tags")
             .then(response => response.json())
             .then(tags => this.setState({ tags }));
     }

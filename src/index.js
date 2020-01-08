@@ -1,11 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { Provider } from 'react-redux'; 
-// import { ConnectedRouter } from 'react-router-redux';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
 
 import App from './components/App';
 import createBrowserHistory from 'history/createBrowserHistory';
 import createStore from './store';
+
+// import Home from './components/Home';
+// import ArticleViewer from './components/ArticleViewer';
+// import EditNewArticle from './components/EditNewArticle';
+// import authentication from './components/authentication';
+// import './components/Home.css';
+import {
+    BrowserRouter as Router,
+    Route, Link, Switch
+} from "react-router-dom";
 
 import './index.css';
 import * as serviceWorker from './serviceWorker';
@@ -19,7 +29,16 @@ ReactDOM.render(
     <App />
     // <Provider store={store}>
     //     <ConnectedRouter history={history}>
-    //         <App />
+    //         <switch>
+    //             <Route exact path="/" component={Home} />
+    //             <Route exact path="/ArticleViewer" component={ArticleViewer} />
+    //             <Route path="/ArticleViewer/:article_id" component={ArticleViewer} />
+    //             <Route path="/EditNewArticle" component={EditNewArticle} />
+    //             <Route path="/auth" component={authentication} />
+    //         </switch>
+    //         <Switch>
+    //             <App />
+    //         </Switch>
     //     </ConnectedRouter>
     // </Provider>
     , document.getElementById('root')
