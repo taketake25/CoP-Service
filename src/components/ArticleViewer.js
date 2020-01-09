@@ -4,12 +4,9 @@ import { withRouter } from 'react-router';
 // import { BrowserRouter as Router, Route } from "react-router-dom";
 // import PropTypes from 'prop-types';
 import marked from 'marked';
-import sanitize from 'sanitize-html';
-
+// import sanitize from 'sanitize-html';
 import PageHeader from './PageHeader';
 import './ArticleViewer.css';
-// import './EditNewArticle.css';
-
 
 
 class ArticleViewer extends Component {
@@ -97,6 +94,9 @@ class ArticleViewer extends Component {
                 },
                 body: JSON.stringify(new_comment)
             });
+
+            // 現在のコメント欄を追加する
+            this.setState({ comments: this.state.comments.concat({ message: this.state.text, commented_user_name: "馬場" }) });
             this.setState({ text: '' });
         } else {
             this.setState({ alert: "情報が入力されていません" })
@@ -124,21 +124,22 @@ class ArticleViewer extends Component {
             )
         }
 
-
         return (
             <div>
                 <PageHeader />
                 <div className="ArticleViewer">
                     <div className="ArticleViewerHeader">
-                        Headerやで
+                        {/* Headerやで */}
                         {/* 隠れてしまっているのでpaddingを修正する */}
                     </div>
 
                     <div className="ArticleCard">
                         <div className="ArticleMetaData">
-                            <img style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='image' />
+                            <img style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='IMG' />
                             <div className="ArticleCardTitle">{this.state.articles.article_title}</div>
                             <div className="ArticleCardDay">{this.state.articles.article_date}</div>
+                            {/* なぜかここで substr()できないので，バックエンドの方で短くする予定． */}
+                            {/* <div className="ArticleCardDay">{temp.substr(0, 10)}</div> */}
                         </div>
                         <div className="ArticleTag">{this.state.articles.article_tag_id}</div>
                         <div className="ArticleText">

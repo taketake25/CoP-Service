@@ -23,7 +23,7 @@ class PageHeader extends Component {
 
     handleChangeQuery(e) {
         this.setState({
-            query: "query text"
+            query: e.target.value
         });
     }
 
