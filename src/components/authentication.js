@@ -4,6 +4,7 @@ import './authentication.css';
 import { withRouter } from 'react-router';
 import PageHeader from './PageHeader';
 import { withCookies, Cookies } from 'react-cookie';
+import { HomeFooter } from './Home';
 
 class authentication extends Component {
     constructor(props) {
@@ -109,7 +110,7 @@ class authentication extends Component {
                             value={this.state.query}
                             onChange={(event) => this.handleChangePassword(event)}
                         />
-                        <button onClick={this.handleSigninSubmit}>signinするで</button>
+                        <button onClick={this.handleSigninSubmit}>新規登録するで</button>
                     </div>
                     <div className="login">
                         ログイン
@@ -125,10 +126,11 @@ class authentication extends Component {
                             value={this.state.query}
                             onChange={(event) => this.handleChangePassword(event)}
                         />
-                        <button onClick={this.handleSubmit}>loginするで</button>
+                        <button onClick={this.handleSubmit}>ログインするで</button>
                     </div>
                 </div>
                 <div className="alert"><p>{this.state.alert} <br /></p></div>
+                <HomeFooter />
             </div >
         );
     }

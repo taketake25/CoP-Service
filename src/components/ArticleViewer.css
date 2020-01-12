@@ -8,6 +8,7 @@
     /* box-sizing: border-box; */
     padding-top: 2rem;
     padding-bottom: 2rem;
+    min-height: 75vh;
 }
 
 .ArticleList{
@@ -17,7 +18,7 @@
 }
 
 .ArticleViewer .ArticleCard{
-    margin: 1em;
+    margin: 2em;
     padding: 1rem;
     height: auto;
     border-radius: 10px 10px 10px 10px;

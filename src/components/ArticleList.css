@@ -9,8 +9,14 @@
     display: inline-block;
     width: 65%;
     padding: 1em;
-    
 }
+
+.ArticleListCategory{
+    font-size: 2rem;
+    border-bottom: double 4px cornflowerblue;
+    /* ダサい */
+}
+
 
 .ArticleList .ArticleCard{
     margin: 1rem;

@@ -7,7 +7,7 @@ import marked from 'marked';
 // import sanitize from 'sanitize-html';
 import PageHeader from './PageHeader';
 import './ArticleViewer.css';
-
+import { HomeFooter } from './Home';
 
 class ArticleViewer extends Component {
     constructor(props) {
@@ -151,6 +151,7 @@ class ArticleViewer extends Component {
                                 //         'img'
                                 //     ])
                                 // })
+                                // sanitizeするとh1などがうまく表示されない
                             }}>
                                 {/* <div dangerouslySetInnerHTML={{ __html: marked(this.state.articles.article_text) }}> */}
                             </div>
@@ -175,40 +176,41 @@ class ArticleViewer extends Component {
                         </div>
                     </div>
                 </div>
+                <HomeFooter />
             </div >
         )
     }
 }
 
 
-class ArticleBody extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            text: '',
-            articles: this.props.articles[0]
-        }
-        autoBind(this)
-        console.log(JSON.stringify(this.state.articles))
-    }
-    render() {
-        const imagePath = "image3.png"
+// class ArticleBody extends Component {
+//     constructor(props) {
+//         super(props)
+//         this.state = {
+//             text: '',
+//             articles: this.props.articles[0]
+//         }
+//         autoBind(this)
+//         console.log(JSON.stringify(this.state.articles))
+//     }
+//     render() {
+//         const imagePath = "image3.png"
 
-        return (
-            <div className="ArticleCard">
-                {/* {this.state.article.article_id} */}
-                <div className="ArticleMetaData">
-                    <img style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='user imaga' />
-                    <div className="ArticleCardTitle"><p>{this.state.articles.article_title}</p></div>
-                    <div className="ArticleCardDay">{this.state.articles.article_date}</div>
-                </div>
-                <div className="ArticleTag">{this.state.articles.article_tag_id}</div>
-                <div className="ArticleText">
-                    {this.state.articles.article_text}
-                </div>
-            </div>
-        );
-    }
-}
+//         return (
+//             <div className="ArticleCard">
+//                 {/* {this.state.article.article_id} */}
+//                 <div className="ArticleMetaData">
+//                     <img style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='user imaga' />
+//                     <div className="ArticleCardTitle"><p>{this.state.articles.article_title}</p></div>
+//                     <div className="ArticleCardDay">{this.state.articles.article_date}</div>
+//                 </div>
+//                 <div className="ArticleTag">{this.state.articles.article_tag_id}</div>
+//                 <div className="ArticleText">
+//                     {this.state.articles.article_text}
+//                 </div>
+//             </div>
+//         );
+//     }
+// }
 
 export default withRouter(ArticleViewer);

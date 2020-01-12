@@ -32,10 +32,10 @@ class ArticleList extends Component {
         };
         autoBind(this)
 
-        // fetch("http://192.168.0.13:4000/user")
-        fetch("http://172.20.11.121:4000/user")
-            .then(response => response.json())
-            .then(user => this.setState({ user }));
+        // // fetch("http://192.168.0.13:4000/user")
+        // fetch("http://172.20.11.121:4000/user")
+        //     .then(response => response.json())
+        //     .then(user => this.setState({ user }));
 
         // fetch("http://192.168.0.13:4000/article")
         fetch("http://172.20.11.121:4000/article")
@@ -47,6 +47,7 @@ class ArticleList extends Component {
     }
 
     render() {
+        //ここに書いている内容はめちゃくちゃ実行が繰り返されてる可能性がある
         const cards = [];
         for (var i = 0; i < this.state.article.length; i++) {
             cards.push(
@@ -69,7 +70,7 @@ class ArticleList extends Component {
                 </Router>
                 <div className="ArticleListHeader">
                     <div className="ArticleListCategory">
-                        みんなの記事だよ～
+                        新着投稿
                     </div>
                 </div>
                 <div className="ArticleListBody">
@@ -103,11 +104,7 @@ class ArticleCard extends Component {
                 </div>
                 <div className="ArticleTag">{this.props.article.article_tag_id}</div>
                 {/* <div className="ArticleCardAgenda">
-                    {this.props.article.article_filename}をhtmlにdangerな方法で変換するんやで．<br />
-                    合計4行の文章をagendaとして出力するんやで<br />
-                    でも，10個分のCardのテキストを出力すると，constructorでの実行が間に合わないので，困ってるんやわ．<br />
-                    ということで，<br />
-                    4行のテストを終了するで．
+                    4行の概要を表示させるのもありかと考えてた．
                 </div> */}
             </div>
         );

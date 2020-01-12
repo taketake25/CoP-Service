@@ -23,11 +23,13 @@ class Home extends Component {
     }
 
     render() {
+        const back = "background.jpg";
         return (
             <div className="HomeRoot">
                 <PageHeader />
 
                 <div className="Home">
+                    {/* <div><img src={back} /> </div> */}
                     <HomeHeader />
                     <HomeBody />
                 </div >
@@ -43,8 +45,7 @@ function HomeHeader(props) {
         <div className="HomeHeader">
             <div className="ServiceExplanation">
                 <div className="ServiceIdea">同志社エンジニア交流サイト</div>
-                {/* <div className="ServiceLogo">D-PENS</div> ロゴの画像にする */}
-                <img src={logo} alt="ServiceLogo" /> {/* ロゴの画像にする */}
+                <img src={logo} alt="ServiceLogo" />
             </div>
             <div className="ServicePurpose">
                 D-PENSとは<br />
@@ -134,11 +135,30 @@ class CategoryList extends Component {
 }
 
 
-function HomeFooter(props) {
+export function HomeFooter(props) {
     // 後で実装する
+    const logo = "logo.png";
     return (
         <div className='HomeFooter'>
-            Footer
+            <div className='FooterAccounts'>
+                <img src={logo} alt="ServiceLogo" /> {/* ロゴの画像にする */}
+
+                <a href={`http://sample.com`} style={{}}>twitter</a><br />
+                <a href={`http://sample.com`} style={{}}>facebook</a>
+            </div>
+            <div className='FooterTools'>
+                <a href={`/`} style={{}}>タグ一覧</a><br />
+                <a href={`/`} style={{}}>ユーザを探す</a>
+            </div>
+            <div className='FooterServiceInfo'>
+                <a href={`/`} style={{}}>about</a><br />
+                <a href={`/`} style={{}}>利用規約</a><br />
+                <a href={`/`} style={{}}>プライバシー</a><br />
+                <a href={`/`} style={{}}>ガイドライン</a><br />
+                <a href={`/`} style={{}}>ご意見</a><br />
+                <a href={`/`} style={{}}>ヘルプ</a><br />
+            </div>
+            <br />@2020- taketake Inc.
         </div>
     );
 }
