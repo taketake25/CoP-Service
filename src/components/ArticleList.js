@@ -32,11 +32,6 @@ class ArticleList extends Component {
         };
         autoBind(this)
 
-        // // fetch("http://192.168.0.13:4000/user")
-        // fetch("http://172.20.11.121:4000/user")
-        //     .then(response => response.json())
-        //     .then(user => this.setState({ user }));
-
         // fetch("http://192.168.0.13:4000/article")
         fetch("http://172.20.11.121:4000/article")
             // .then(response => console.log(response))
@@ -110,11 +105,5 @@ class ArticleCard extends Component {
         );
     }
 }
-
-// ArticleList.propTypes = {
-//     articles: PropTypes.array,
-//     increment: PropTypes.func.isRequired,
-//     decrement: PropTypes.func.isRequired,
-// };
 
 export default withRouter(ArticleList);

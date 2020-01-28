@@ -3,6 +3,7 @@
 /* --------------------------------------- */
 
 .PageHeader{
+  z-index: 1;
   position: fixed;
   font-family: 'Source Code Pro', Arial, Helvetica, '游ゴシック';
   background-color: rgb(46, 46, 43);  /* 将来的に背景は透明度のある写真に変えたい */

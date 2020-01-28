@@ -5,6 +5,13 @@ import { withRouter } from 'react-router';
 import PageHeader from './PageHeader';
 import marked from 'marked';
 // import sanitize from 'sanitize-html';
+import Button from '@material-ui/core/Button';
+
+import orange from '@material-ui/core/colors/orange';
+import blue from '@material-ui/core/colors/blue';
+const primary = orange[400];
+const secondary = blue[200];
+const accent = blue[200];
 
 class EditNewArticle extends Component {
     constructor(props) {
@@ -52,7 +59,8 @@ class EditNewArticle extends Component {
                 write_user_id: 1 //あとで実装するんやでな
             };
 
-            fetch("http://192.168.0.13:4000/article/create", {
+            fetch("http://172.20.11.121:3000/article/create", {
+                // fetch("http://192.168.0.13:4000/article/create", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8'
@@ -108,7 +116,7 @@ class EditNewArticle extends Component {
                     </div>
                     {/* <p>{this.state.alert}</p> */}
                     <div className="EditNewArticleFooter">
-                        <button onClick={this.handleChangeSubmit}>投稿する</button>
+                        <Button color="primary" onClick={this.handleChangeSubmit}>投稿する</Button>
                     </div>
                 </div>
             </div>

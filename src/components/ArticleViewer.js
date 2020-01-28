@@ -8,6 +8,7 @@ import marked from 'marked';
 import PageHeader from './PageHeader';
 import './ArticleViewer.css';
 import { HomeFooter } from './Home';
+import { Card, CardContent, Button } from '@material-ui/core'
 
 class ArticleViewer extends Component {
     constructor(props) {
@@ -37,6 +38,7 @@ class ArticleViewer extends Component {
         this.handleChageSubmit = this.handleChangeSubmit.bind(this);
 
         var temp = this.props.match.params.article_id;
+        // var httpRequest = `http://192.168.0.13:4000/article/getText/${temp}`;
         var httpRequest = `http://172.20.11.121:4000/article/getText/${temp}`;
         fetch(httpRequest, {
             method: "GET",
@@ -56,6 +58,7 @@ class ArticleViewer extends Component {
             });
 
         var commentRequest = `http://172.20.11.121:4000/article/getComment/${temp}`;
+        // var commentRequest = `http://192.168.0.13:4000/article/getComment/${temp}`;
         fetch(commentRequest, {
             method: "GET",
             dataType: "json",
@@ -110,17 +113,19 @@ class ArticleViewer extends Component {
 
         for (var i = 0; i < this.state.comments.length; i++) {
             showComments.push(
-                <div className="Comment">
-                    <div className="CommentUserInfo">
-                        <img style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='user image' />
-                        <div className="UserName">
-                            {this.state.comments[i].commented_user_name}
+                <Card key={this.state.comments[i].commented_user_name} style={{ marginTop: '10px' }}>
+                    <div className="Comment">
+                        <div className="CommentUserInfo">
+                            <img style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='user image' />
+                            <div className="UserName">
+                                {this.state.comments[i].commented_user_name}
+                            </div>
+                        </div>
+                        <div className="CommentText">
+                            {this.state.comments[i].message}
                         </div>
                     </div>
-                    <div className="CommentText">
-                        {this.state.comments[i].message}
-                    </div>
-                </div>
+                </Card >
             )
         }
 
@@ -171,7 +176,7 @@ class ArticleViewer extends Component {
                                 {/* マリアナ海溝の深さ */}
                             </div>
                             <div className="CommentSender">
-                                <button onClick={this.handleChangeSubmit}>投稿する</button>右に寄せたい
+                                <Button onClick={this.handleChangeSubmit}>投稿する</Button>右に寄せたい
                             </div>
                         </div>
                     </div>
@@ -182,35 +187,5 @@ class ArticleViewer extends Component {
     }
 }
 
-
-// class ArticleBody extends Component {
-//     constructor(props) {
-//         super(props)
-//         this.state = {
-//             text: '',
-//             articles: this.props.articles[0]
-//         }
-//         autoBind(this)
-//         console.log(JSON.stringify(this.state.articles))
-//     }
-//     render() {
-//         const imagePath = "image3.png"
-
-//         return (
-//             <div className="ArticleCard">
-//                 {/* {this.state.article.article_id} */}
-//                 <div className="ArticleMetaData">
-//                     <img style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='user imaga' />
-//                     <div className="ArticleCardTitle"><p>{this.state.articles.article_title}</p></div>
-//                     <div className="ArticleCardDay">{this.state.articles.article_date}</div>
-//                 </div>
-//                 <div className="ArticleTag">{this.state.articles.article_tag_id}</div>
-//                 <div className="ArticleText">
-//                     {this.state.articles.article_text}
-//                 </div>
-//             </div>
-//         );
-//     }
-// }
 
 export default withRouter(ArticleViewer);

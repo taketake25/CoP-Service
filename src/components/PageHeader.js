@@ -3,6 +3,7 @@ import autoBind from 'react-autobind';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import './Home.css';
+import Button from '@material-ui/core/Button';
 
 class PageHeader extends Component {
     constructor(props) {
