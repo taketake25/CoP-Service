@@ -13,13 +13,6 @@ class ArticleList extends Component {
         super(props)
         this.state = {
             text: '',
-            user: [{
-                user_id: 0,
-                user_name: "",
-                user_password: "",
-                user_image: "",
-                user_point: 0
-            }],
             article: [{
                 article_id: 0,
                 article_title: "",
@@ -29,15 +22,21 @@ class ArticleList extends Component {
                 article_tag_id: 0
             }],
             count: 0,
-            search_word: this.props.match.params.article_id
+            search_word: this.props.match.params.word,
         };
         autoBind(this)
 
+        console.log(this.state.search_word);
+        if (this.state.search_word == 'lastest' || this.state.search_word == undefined) {
+            var searchPage = `http://localhost:1234/article/`;
+        } else {
+            var searchPage = `http://localhost:1234/article/word/${this.state.search_word}`;
+        }
         // var httpRequest = `http://172.20.11.121:4000/article/${this.state.search_word}`;
-        var httpRequest = `http://localhost:1234/article/`;
+        // var httpRequest = `http://localhost:1234/article/`;
         // fetch("http://192.168.0.13:4000/article")
         // fetch("http://172.20.11.121:4000/article/")
-        fetch(httpRequest)
+        fetch(searchPage)
             // .then(response => console.log(response))
             .then(response => response.json())
             .then(article => this.setState({ article }));
@@ -60,6 +59,13 @@ class ArticleList extends Component {
         }
         // inputArticles(this.state.article);
 
+        var label = "";
+        if (this.state.search_word === "lastest" || this.state.search_word === undefined) {
+            label = "新着投稿"
+        } else {
+            label = "検索語：\"" + this.state.search_word + "\"";
+        }
+
         return (
             <div className="ArticleList" >
                 <Router>
@@ -67,7 +73,7 @@ class ArticleList extends Component {
                 </Router>
                 <div className="ArticleListHeader">
                     <div className="ArticleListCategory">
-                        新着投稿
+                        {label}
                     </div>
                 </div>
                 <div className="ArticleListBody">

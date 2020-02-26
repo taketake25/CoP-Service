@@ -79,6 +79,7 @@ class EditNewArticle extends Component {
                     <div className="EditNewArticleHeader">
                         <div className="EditNewArticleHeaderTitle">
                             <TextField
+                                size="small"
                                 variant="outlined"
                                 placeholder="Title"
                                 value={this.state.query}
@@ -88,6 +89,7 @@ class EditNewArticle extends Component {
                         {/* ドロップダウンから選択する方法にする．というかあとで実装する */}
                         <div className="EditNewArticleHeaderTag">
                             <TextField
+                                size="small"
                                 variant="outlined"
                                 placeholder="Tags   デザインは後で 画像sanitize-html" value={this.state.query}
                                 onChange={(event) => this.handleChangeTags(event)} />
@@ -101,7 +103,13 @@ class EditNewArticle extends Component {
                         {/* <div className="EditNewArticleBodyOption"></div> */}
                         {/* https://github.com/apostrophecms/sanitize-html */}
                         <div className="EditNewArticleBodyEditor">
-                            <textarea
+                            <TextField
+                                fullWidth
+                                multiline
+                                rows="15"
+                                size="small"
+                                variant="outlined"
+                                placeholder="記事をMarkDown形式で入力"
                                 value={this.state.text}
                                 onChange={this.handleChangeText}
                             />

@@ -9,6 +9,7 @@
     display: inline-block;
     width: 65%;
     padding: 1em;
+    vertical-align: top;
 }
 
 .ArticleListCategory{

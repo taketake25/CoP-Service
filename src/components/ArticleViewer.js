@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import autoBind from 'react-autobind';
 import { withRouter } from 'react-router';
-// import { BrowserRouter as Router, Route } from "react-router-dom";
-// import PropTypes from 'prop-types';
-// import sanitize from 'sanitize-html';
 import marked from 'marked';
 import PageHeader from './PageHeader';
 import './ArticleViewer.css';
 import { HomeFooter } from './Home';
 import { TextField, Card, Button } from '@material-ui/core'
-import Paper from '@material-ui/core/Paper';
+import imagePath from './image3.png';
 
 class ArticleViewer extends Component {
     constructor(props) {
@@ -38,10 +35,10 @@ class ArticleViewer extends Component {
         this.handleChangeText = this.handleChangeText.bind(this);
         this.handleChageSubmit = this.handleChangeSubmit.bind(this);
 
-        var temp = this.props.match.params.article_id;
+        console.log(this.state.article_id.article_id);
         // var httpRequest = `http://192.168.0.13:4000/article/getText/${temp}`;
         // var httpRequest = `http://172.20.11.121:4000/article/getText/${temp}`;
-        var httpRequest = `http://localhost:1234/article/getText/${temp}`;
+        var httpRequest = `http://localhost:1234/article/getText/${this.state.article_id.article_id}`;
         fetch(httpRequest, {
             method: "GET",
             dataType: "json",
@@ -56,11 +53,12 @@ class ArticleViewer extends Component {
                     JSON.stringify(json)
                 );
                 this.setState({ articles: json[0] })
+                // console.log(this.state.articles.article_id)
                 console.log(this.state.articles.article_id)
             });
 
         // var commentRequest = `http://172.20.11.121:3000/article/getComment/${temp}`;
-        var commentRequest = `http://localhost:1234/article/getComment/${temp}`;
+        var commentRequest = `http://localhost:1234/article/getComment/${this.state.article_id.article_id}`;
         // var commentRequest = `http://192.168.0.13:4000/article/getComment/${temp}`;
         fetch(commentRequest, {
             method: "GET",
@@ -88,7 +86,7 @@ class ArticleViewer extends Component {
         if (this.state.text !== "") {
             let new_comment = {
                 comment_user_id: 1,
-                comment_article_id: this.props.match.params.article_id,
+                comment_article_id: this.state.article_id,
                 message: this.state.text,
             };
 
@@ -113,7 +111,7 @@ class ArticleViewer extends Component {
 
     render() {
         const showComments = [];
-        const imagePath = "image3.png"
+        // const imagePath = "image3.png"
 
         for (var i = 0; i < this.state.comments.length; i++) {
             showComments.push(

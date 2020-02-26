@@ -9,13 +9,13 @@
     padding-top: 2rem;
     padding-bottom: 2rem;
     min-height: 75vh;
-    background-color: #e0e0e0;
+    background-color: #f0f0f0;
 }
 
 .ArticleMain{
     background-color:white;
     margin: 2rem;
-    padding: 1rem;
+    padding: 2rem;
 }
 
 
@@ -42,7 +42,7 @@
 
 
 .ArticleText{
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-bottom: 2rem;
     overflow: hidden;
     height: auto;
@@ -67,7 +67,7 @@
 
 
 .ArticleFooter{
-    background-color: #e0e0e0;
+    background-color: #f0f0f0;
     margin: 2rem;
     padding: 1rem;
     /* margin-left: 15%;
@@ -75,8 +75,8 @@
 }
 
 .Comments{
-    margin-top: 3%;
-    margin-bottom: 1%;
+    /* margin-top: 3%; */
+    margin-bottom: 1.2rem;
 }
 
 .CommentUserInfo{
@@ -129,6 +129,7 @@
 
 .CommentSender{
     margin-top: 0.5rem;
+    align: right;
 }
 
 .CommentSender Button{

@@ -10,11 +10,12 @@ class PageHeader extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            text: '',
+            query: '',
             markedLines: []
         }
         autoBind(this)
         this.handleChangeQuery = this.handleChangeQuery.bind(this);
+        this.keyPress = this.keyPress.bind(this);
     }
 
     static propTypes = {
@@ -25,10 +26,18 @@ class PageHeader extends Component {
 
     handleChangeQuery(e) {
         this.setState({
-            query: e.target.value
+            query: e.target.value //検索内容の文面を更新
         });
     }
-
+    //検索欄においてEnterが押されたらqueryを飛ばす
+    keyPress(e) {
+        if (e.which === 13) {
+            var searchPage = `/search/${this.state.query}`;
+            console.log(searchPage);
+            this.props.history.push(searchPage);
+            window.location.reload()
+        }
+    }
     // ストックボタンを押したときの挙動
     showSelfStocks(params) {
 
@@ -55,6 +64,7 @@ class PageHeader extends Component {
                                 placeholder="検索"
                                 value={this.state.query}
                                 onChange={(event) => this.handleChangeQuery(event)}
+                                onKeyPress={(e) => this.keyPress(e)}
                             />
                         </div>
                     </div>

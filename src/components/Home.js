@@ -5,6 +5,7 @@ import './Home.css';
 import ArticleList from './ArticleList';
 // import ArticleList from '../containers/ArticleList';
 import PageHeader from './PageHeader';
+import logo from "./logo.png";
 
 class Home extends Component {
     constructor(props) {
@@ -62,7 +63,7 @@ function HomeHeader(props) {
 function HomeBody(props) {
     return (
         <div className='HomeBody'>
-            <ArticleList />
+            <ArticleList {...props} search_word={"lastest"} />
             <div className="ArticleSide">
                 <UserRanking />
                 <CategoryList />
@@ -71,7 +72,7 @@ function HomeBody(props) {
     );
 }
 
-class UserRanking extends Component {
+export class UserRanking extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -105,7 +106,7 @@ class UserRanking extends Component {
     }
 }
 
-class CategoryList extends Component {
+export class CategoryList extends Component {
     // 後で実装する
     constructor(props) {
         super(props)
@@ -139,7 +140,6 @@ class CategoryList extends Component {
 
 export function HomeFooter(props) {
     // 後で実装する
-    const logo = "logo.png";
     return (
         <div className='HomeFooter'>
             <div className='FooterAccounts'>

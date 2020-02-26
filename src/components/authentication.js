@@ -131,48 +131,72 @@ class authentication extends Component {
                 <div className="auth">
                     <div className="signin">
                         新規登録
-                        <br />
-                        <TextField
-                            variant="outlined"
-                            placeholder="input your user_name"
-                            value={this.state.query}
-                            onChange={(event) => this.handleChangeUsername(event)}
-                        />
-                        <br />
-                        <TextField
-                            variant="outlined"
-                            placeholder="input your email"
-                            value={this.state.query}
-                            onChange={(event) => this.handleChangeMail(event)}
-                        />
-                        <br />
-                        <TextField
-                            variant="outlined"
-                            placeholder="input your password"
-                            value={this.state.query}
-                            onChange={(event) => this.handleChangePassword(event)}
-                        />
-                        <br />
-                        <Button variant="outlined" color="secondary" onClick={this.handleSigninSubmit}>新規登録するで</Button>
+                        <div>
+                            <TextField
+                                variant="outlined"
+                                placeholder="input your user_name"
+                                size="small"
+                                fullWidth
+                                variant="standard"
+                                value={this.state.query}
+                                onChange={(event) => this.handleChangeUsername(event)}
+                            />
+                        </div>
+                        <div>
+                            <TextField
+                                variant="outlined"
+                                placeholder="input your email"
+                                size="small"
+                                fullWidth
+                                variant="standard"
+                                value={this.state.query}
+                                onChange={(event) => this.handleChangeMail(event)}
+                            />
+                        </div>
+                        <div>
+                            <TextField
+                                variant="outlined"
+                                placeholder="input your password"
+                                size="small"
+                                fullWidth
+                                variant="standard"
+                                type="password"
+                                value={this.state.query}
+                                onChange={(event) => this.handleChangePassword(event)}
+                            />
+                        </div>
+                        <div>
+                            <Button variant="outlined" color="secondary" onClick={this.handleSigninSubmit}>新規登録するで</Button>
+                        </div>
                     </div>
-                    <div className="login">
+                    <div className="signin">
                         ログイン
-                        <br />
-                        <TextField
-                            variant="outlined"
-                            placeholder="input your user_name"
-                            value={this.state.query}
-                            onChange={(event) => this.handleChangeUsername(event)}
-                        />
-                        <br />
-                        <TextField
-                            variant="outlined"
-                            placeholder="input your password"
-                            value={this.state.query}
-                            onChange={(event) => this.handleChangePassword(event)}
-                        />
-                        <br />
-                        <Button variant="outlined" color="secondary" onClick={this.handleSubmit}>ログインするで</Button>
+                        <div>
+                            <TextField
+                                variant="outlined"
+                                placeholder="input your user_name"
+                                size="small"
+                                fullWidth
+                                variant="standard"
+                                value={this.state.query}
+                                onChange={(event) => this.handleChangeUsername(event)}
+                            />
+                        </div>
+                        <div>
+                            <TextField
+                                variant="outlined"
+                                placeholder="input your password"
+                                size="small"
+                                fullWidth
+                                variant="standard"
+                                type="password"
+                                value={this.state.query}
+                                onChange={(event) => this.handleChangePassword(event)}
+                            />
+                        </div>
+                        <div>
+                            <Button size="small" variant="outlined" color="secondary" onClick={this.handleSubmit}>ログインするで</Button>
+                        </div>
                         <div className="alert"><p>{this.state.alert} <br /></p></div>
                     </div>
                 </div>
