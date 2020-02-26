@@ -11,7 +11,7 @@
   /* 並べるときに間に自動的に空白を入れて整列してくれる      */
   justify-content: space-between; 
   color: white;
-  height: 2rem;
+  /* height: 2rem; */
   width: 100%;
 }
 
@@ -49,24 +49,26 @@
     margin-right: 2vw; */
 }
 
-.PageHeader input{
-    cursor: pointer;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 1rem; 
+.PageHeader Input{
+  color: black;
+  background-color: white;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 0.4rem;
+  /* margin-right: 1rem;  */
 }
 
 .PageHeader button{
     cursor: pointer;
-    margin-left: 0.5rem; 
-    margin-right: 0.5rem; 
+    margin-left: 1rem;
     background-color: white;
-    text-decoration: none;
+    /* text-decoration: none;
     border-color: white;
     border-top: solid 2px #4fd2e4;
     border-right: white;
     border-left: white;
-    border-bottom: solid 2px #32a5c5;
+    border-bottom: solid 2px #32a5c5; */
 }
 
 .Account{

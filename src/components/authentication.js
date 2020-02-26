@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import autoBind from 'react-autobind';
 import './authentication.css';
-import { withRouter } from 'react-router';
 import PageHeader from './PageHeader';
 import { withCookies, Cookies } from 'react-cookie';
 import { HomeFooter } from './Home';
 import Button from '@material-ui/core/Button';
-
-import orange from '@material-ui/core/colors/orange';
-import blue from '@material-ui/core/colors/blue';
-const primary = orange[400];
-const secondary = blue[200];
-const accent = blue[200];
+import TextField from '@material-ui/core/TextField';
 
 class authentication extends Component {
     constructor(props) {
@@ -60,7 +54,8 @@ class authentication extends Component {
                 user_name: this.state.user_name,
                 user_password: this.state.user_password,
             };
-            fetch("http://172.20.11.121:3000/user/auth", {
+            // fetch("http://172.20.11.121:3000/user/auth", {
+            fetch("http://localhost:1234/user/auth", {
                 // fetch("http://192.168.0.13:4000/user/auth", {
                 method: "POST",
                 headers: {
@@ -99,7 +94,8 @@ class authentication extends Component {
             user_password: this.state.user_password,
         };
         if (this.state.user_name !== "" && (this.state.user_mail !== "" && this.state.user_password !== "")) {
-            fetch("http://172.20.11.121:3000/user/create", {
+            // fetch("http://172.20.11.121:3000/user/create", {
+            fetch("http://localhost:1234/user/create", {
                 // fetch("http://192.168.0.13:4000/user/create", {
                 method: "POST",
                 headers: {
@@ -135,41 +131,48 @@ class authentication extends Component {
                 <div className="auth">
                     <div className="signin">
                         新規登録
-                        <input
-                            type="text"
+                        <br />
+                        <TextField
+                            variant="outlined"
                             placeholder="input your user_name"
                             value={this.state.query}
                             onChange={(event) => this.handleChangeUsername(event)}
                         />
-                        <input
-                            type="text"
+                        <br />
+                        <TextField
+                            variant="outlined"
                             placeholder="input your email"
                             value={this.state.query}
                             onChange={(event) => this.handleChangeMail(event)}
                         />
-                        <input
-                            type="text"
+                        <br />
+                        <TextField
+                            variant="outlined"
                             placeholder="input your password"
                             value={this.state.query}
                             onChange={(event) => this.handleChangePassword(event)}
                         />
-                        <Button variant="outlined" color="primary" onClick={this.handleSigninSubmit}>新規登録するで</Button>
+                        <br />
+                        <Button variant="outlined" color="secondary" onClick={this.handleSigninSubmit}>新規登録するで</Button>
                     </div>
                     <div className="login">
                         ログイン
-                        <input
-                            type="text"
+                        <br />
+                        <TextField
+                            variant="outlined"
                             placeholder="input your user_name"
                             value={this.state.query}
                             onChange={(event) => this.handleChangeUsername(event)}
                         />
-                        <input
-                            type="text"
+                        <br />
+                        <TextField
+                            variant="outlined"
                             placeholder="input your password"
                             value={this.state.query}
                             onChange={(event) => this.handleChangePassword(event)}
                         />
-                        <Button variant="outlined" color="primary" onClick={this.handleSubmit}>ログインするで</Button>
+                        <br />
+                        <Button variant="outlined" color="secondary" onClick={this.handleSubmit}>ログインするで</Button>
                         <div className="alert"><p>{this.state.alert} <br /></p></div>
                     </div>
                 </div>

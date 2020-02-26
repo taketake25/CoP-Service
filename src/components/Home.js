@@ -85,7 +85,8 @@ class UserRanking extends Component {
         };
 
         // fetch("http://192.168.0.13:4000/user")
-        fetch("http://172.20.11.121:4000/user")
+        // fetch("http://172.20.11.121:4000/user")
+        fetch("http://localhost:1234/user")
             .then(response => response.json())
             .then(user => this.setState({ user }));
     }
@@ -116,7 +117,8 @@ class CategoryList extends Component {
         };
 
         // fetch("http://192.168.0.13:4000/tags")
-        fetch("http://172.20.11.121:4000/tags")
+        // fetch("http://172.20.11.121:4000/tags")
+        fetch("http://localhost:1234/tags")
             .then(response => response.json())
             .then(tags => this.setState({ tags }));
     }

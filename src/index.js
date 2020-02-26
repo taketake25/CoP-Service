@@ -1,19 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
 
 import App from './components/App';
 import createBrowserHistory from 'history/createBrowserHistory';
 import createStore from './store';
 
-import {
-    BrowserRouter as Router,
-    Route, Link, Switch
-} from "react-router-dom";
+// import { Provider } from 'react-redux';
+// import { ConnectedRouter } from 'connected-react-router';
+// import {
+//     BrowserRouter as Router,
+//     Route, Link, Switch
+// } from "react-router-dom";
 
 import './index.css';
 import * as serviceWorker from './serviceWorker';
+import { MuiThemeProvider } from '@material-ui/core/styles'  // 追加
+import { theme } from './components/material'// class App extends React.Component {
+
 
 // historyインスタンスの作成
 const history = createBrowserHistory();
@@ -22,11 +25,9 @@ const store = createStore(history);
 
 
 ReactDOM.render(
-    // <MuiThemeProvider theme={theme}>
-    //     <Provider store={store}>
-    <App />
-    //     </Provider>
-    // </MuiThemeProvider>
+    <MuiThemeProvider theme={theme}>
+        <App />
+    </MuiThemeProvider>
     // <Provider store={store}>
     //     <ConnectedRouter history={history}>
     //         <switch>

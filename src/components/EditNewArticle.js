@@ -6,12 +6,7 @@ import PageHeader from './PageHeader';
 import marked from 'marked';
 // import sanitize from 'sanitize-html';
 import Button from '@material-ui/core/Button';
-
-import orange from '@material-ui/core/colors/orange';
-import blue from '@material-ui/core/colors/blue';
-const primary = orange[400];
-const secondary = blue[200];
-const accent = blue[200];
+import TextField from '@material-ui/core/TextField';
 
 class EditNewArticle extends Component {
     constructor(props) {
@@ -20,7 +15,7 @@ class EditNewArticle extends Component {
             text: "",
             article_title: "",
             article_tags: "",
-            alert: ""
+            alert: "",
             // markedLines: [],
             // submit: false
         }
@@ -59,7 +54,8 @@ class EditNewArticle extends Component {
                 write_user_id: 1 //あとで実装するんやでな
             };
 
-            fetch("http://172.20.11.121:3000/article/create", {
+            // fetch("http://172.20.11.121:3000/article/create", {
+            fetch("http://localhost:1234/article/create", {
                 // fetch("http://192.168.0.13:4000/article/create", {
                 method: "POST",
                 headers: {
@@ -82,8 +78,8 @@ class EditNewArticle extends Component {
                     {/* タイトルやタグを記入する部分 */}
                     <div className="EditNewArticleHeader">
                         <div className="EditNewArticleHeaderTitle">
-                            <input
-                                type="text"
+                            <TextField
+                                variant="outlined"
                                 placeholder="Title"
                                 value={this.state.query}
                                 onChange={(event) => this.handleChangeTitle(event)}
@@ -91,7 +87,8 @@ class EditNewArticle extends Component {
                         </div>
                         {/* ドロップダウンから選択する方法にする．というかあとで実装する */}
                         <div className="EditNewArticleHeaderTag">
-                            <input type="text"
+                            <TextField
+                                variant="outlined"
                                 placeholder="Tags   デザインは後で 画像sanitize-html" value={this.state.query}
                                 onChange={(event) => this.handleChangeTags(event)} />
                         </div>

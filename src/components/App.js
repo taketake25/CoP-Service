@@ -10,16 +10,7 @@ import ArticleViewer from './ArticleViewer';
 import EditNewArticle from './EditNewArticle';
 import authentication from './authentication';
 import './Home.css';
-import withWidth from '@material-ui/core/withWidth'
-import orange from '@material-ui/core/colors/orange';
-import blue from '@material-ui/core/colors/blue';
 
-const primary = orange[400];
-const secondary = blue[200];
-// const accent = orange['A200']; 
-const accent = blue[200];
-
-// class App extends React.Component {
 function App() {
   // render() {
 
@@ -28,6 +19,7 @@ function App() {
       <Router>
         <switch>
           <Route exact path="/" component={Home} />
+          {/* <Route exact path="/:search_word" component={Home} /> */}
           <Route exact path="/ArticleViewer" component={ArticleViewer} />
           <Route path="/ArticleViewer/:article_id" component={ArticleViewer} />
           <Route path="/EditNewArticle" component={EditNewArticle} />

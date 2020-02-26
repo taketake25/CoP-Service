@@ -29,16 +29,18 @@ class ArticleList extends Component {
                 article_tag_id: 0
             }],
             count: 0,
+            search_word: this.props.match.params.article_id
         };
         autoBind(this)
 
+        // var httpRequest = `http://172.20.11.121:4000/article/${this.state.search_word}`;
+        var httpRequest = `http://localhost:1234/article/`;
         // fetch("http://192.168.0.13:4000/article")
-        fetch("http://172.20.11.121:4000/article")
+        // fetch("http://172.20.11.121:4000/article/")
+        fetch(httpRequest)
             // .then(response => console.log(response))
             .then(response => response.json())
             .then(article => this.setState({ article }));
-        // .then(article => console.log(article));
-
     }
 
     render() {

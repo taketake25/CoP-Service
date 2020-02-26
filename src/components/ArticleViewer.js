@@ -3,12 +3,13 @@ import autoBind from 'react-autobind';
 import { withRouter } from 'react-router';
 // import { BrowserRouter as Router, Route } from "react-router-dom";
 // import PropTypes from 'prop-types';
-import marked from 'marked';
 // import sanitize from 'sanitize-html';
+import marked from 'marked';
 import PageHeader from './PageHeader';
 import './ArticleViewer.css';
 import { HomeFooter } from './Home';
-import { Card, CardContent, Button } from '@material-ui/core'
+import { TextField, Card, Button } from '@material-ui/core'
+import Paper from '@material-ui/core/Paper';
 
 class ArticleViewer extends Component {
     constructor(props) {
@@ -39,7 +40,8 @@ class ArticleViewer extends Component {
 
         var temp = this.props.match.params.article_id;
         // var httpRequest = `http://192.168.0.13:4000/article/getText/${temp}`;
-        var httpRequest = `http://172.20.11.121:4000/article/getText/${temp}`;
+        // var httpRequest = `http://172.20.11.121:4000/article/getText/${temp}`;
+        var httpRequest = `http://localhost:1234/article/getText/${temp}`;
         fetch(httpRequest, {
             method: "GET",
             dataType: "json",
@@ -57,7 +59,8 @@ class ArticleViewer extends Component {
                 console.log(this.state.articles.article_id)
             });
 
-        var commentRequest = `http://172.20.11.121:4000/article/getComment/${temp}`;
+        // var commentRequest = `http://172.20.11.121:3000/article/getComment/${temp}`;
+        var commentRequest = `http://localhost:1234/article/getComment/${temp}`;
         // var commentRequest = `http://192.168.0.13:4000/article/getComment/${temp}`;
         fetch(commentRequest, {
             method: "GET",
@@ -90,7 +93,8 @@ class ArticleViewer extends Component {
             };
 
             // fetch("http://192.168.0.13:4000/comment/create", {
-            fetch("http://172.20.11.121:4000/comment/create", {
+            // fetch("http://172.20.11.121:1234/comment/create", {
+            fetch("http://localhost:1234/comment/create", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8'
@@ -138,14 +142,14 @@ class ArticleViewer extends Component {
                         {/* 隠れてしまっているのでpaddingを修正する */}
                     </div>
 
-                    <div className="ArticleCard">
+                    <div className="ArticleMain">
                         <div className="ArticleMetaData">
                             <img style={{ width: '4vw', height: '4vw' }} src={imagePath} alt='IMG' />
-                            <div className="ArticleCardTitle">{this.state.articles.article_title}</div>
                             <div className="ArticleCardDay">{this.state.articles.article_date}</div>
                             {/* なぜかここで substr()できないので，バックエンドの方で短くする予定． */}
                             {/* <div className="ArticleCardDay">{temp.substr(0, 10)}</div> */}
                         </div>
+                        <div className="ArticleTitle">{this.state.articles.article_title}</div>
                         <div className="ArticleTag">{this.state.articles.article_tag_id}</div>
                         <div className="ArticleText">
                             {/* this.state.articles.article_textを直接突っ込むとobject型としてとらえられてしまうので，`${}`で囲う */}
@@ -169,14 +173,22 @@ class ArticleViewer extends Component {
                         </div>
                         <div className="SendComment">
                             <div>
-                                <textarea
+                                <TextField
+                                    id="filled-multiline-flexible"
+                                    label="コメントを投稿する"
+                                    multiline
+                                    rows="3"
+                                    variant="outlined"
+                                    placeholder="コメントを記入してください．"
+                                    fullWidth
                                     value={this.state.text}
                                     onChange={this.handleChangeText}
                                 />
+
                                 {/* マリアナ海溝の深さ */}
                             </div>
                             <div className="CommentSender">
-                                <Button onClick={this.handleChangeSubmit}>投稿する</Button>右に寄せたい
+                                <Button variant="outlined" onClick={this.handleChangeSubmit}>投稿</Button>
                             </div>
                         </div>
                     </div>
