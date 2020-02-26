@@ -35,7 +35,7 @@ class PageHeader extends Component {
             var searchPage = `/search/${this.state.query}`;
             console.log(searchPage);
             this.props.history.push(searchPage);
-            window.location.reload()
+            // window.location.reload()
         }
     }
     // ストックボタンを押したときの挙動

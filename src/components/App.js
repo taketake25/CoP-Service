@@ -26,7 +26,7 @@ function App() {
           <Route path="/ArticleViewer/:article_id" component={ArticleViewer} />
           <Route path="/EditNewArticle" component={EditNewArticle} />
           <Route path="/auth" component={authentication} />
-          <Route path="*" component={Home} />
+          {/* <Route path="*" component={Home} /> */}
         </switch>
         <div>
           <ul>
