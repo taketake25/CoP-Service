@@ -4,9 +4,7 @@ import { withRouter } from 'react-router';
 import './Home.css';
 import { HomeFooter, UserRanking, CategoryList } from './Home';
 import ArticleList from './ArticleList';
-import PropTypes from 'prop-types';
 import PageHeader from './PageHeader';
-import { Input, Button } from '@material-ui/core'
 
 class Search extends Component {
     constructor(props) {

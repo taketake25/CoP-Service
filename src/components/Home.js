@@ -10,10 +10,6 @@ import logo from "./logo.png";
 class Home extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            text: '',
-            markedLines: []
-        }
         autoBind(this)
         this.handleClick = this.handleClick.bind(this);
     }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useCallback } from 'react';
 import autoBind from 'react-autobind';
 import './EditNewArticle.css';
 import { withRouter } from 'react-router';
@@ -7,6 +7,7 @@ import marked from 'marked';
 // import sanitize from 'sanitize-html';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Dropzone from 'react-dropzone';
 
 class EditNewArticle extends Component {
     constructor(props) {
@@ -16,8 +17,7 @@ class EditNewArticle extends Component {
             article_title: "",
             article_tags: "",
             alert: "",
-            // markedLines: [],
-            // submit: false
+            files: [],
         }
         autoBind(this);
         this.handleChangeText = this.handleChangeText.bind(this);
@@ -25,7 +25,20 @@ class EditNewArticle extends Component {
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
         this.handleChangeTags = this.handleChangeTags.bind(this);
         this.handleChageSubmit = this.handleChangeSubmit.bind(this);
+        // this.handleOnDrop = this.handleOnDrop.bind(this);
+        this.handleOnDrop = (files) => { // なんでコンストラクタで書くかわからん．active
+            this.setState({ files })
+            files.map(file => console.log(file.name))
+        };
     }
+
+    // handleOnDrop(event) {
+    //     event.map(file => {
+    //         this.setState({ files: file.name });
+    //         console.log(file.name);
+    //     });
+    // }
+
 
     handleChangeText(event) {
         this.setState({ text: event.target.value });
@@ -69,7 +82,16 @@ class EditNewArticle extends Component {
         }
     }
 
+
+
+
     render() {
+        const files = this.state.files.map(file => (
+            <li key={file.name}>
+                {file.name} - {file.size} bytes
+            </li>
+        ));
+
         return (
             <div>
                 <PageHeader />
@@ -102,7 +124,26 @@ class EditNewArticle extends Component {
                         {/* 文章の太字や画像の設定をする場所． 後で実装する */}
                         {/* <div className="EditNewArticleBodyOption"></div> */}
                         {/* https://github.com/apostrophecms/sanitize-html */}
+
+
                         <div className="EditNewArticleBodyEditor">
+                            <Dropzone onDrop={this.handleOnDrop}
+                                accept="image/gif,image/jpeg,image/png,image/jpg">
+                                {({ getRootProps, getInputProps }) => (
+                                    <section className="uploadContainer">
+                                        <div {...getRootProps()}>
+                                            <input {...getInputProps()} />
+                                            {
+                                                <div>Drop 'n' drop some files here, or click to select files</div>
+                                            }
+                                        </div>
+                                        <aside>
+                                            ここにファイル名が出力されるはずだよ
+                                            <ul>{files}</ul>
+                                        </aside>
+                                    </section>
+                                )}
+                            </Dropzone>
                             <TextField
                                 fullWidth
                                 multiline
@@ -124,7 +165,7 @@ class EditNewArticle extends Component {
                         <Button color="primary" onClick={this.handleChangeSubmit}>投稿する</Button>
                     </div>
                 </div>
-            </div>
+            </div >
         );
     }
 }
