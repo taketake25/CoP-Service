@@ -87,9 +87,12 @@ class EditNewArticle extends Component {
 
     render() {
         const files = this.state.files.map(file => (
-            <li key={file.name}>
-                {file.name} - {file.size} bytes
-            </li>
+            <div>
+                <li key={file.name}>
+                    {file.name} - {file.size} bytes  -  {file.path}
+                </li>
+                <img style={{ width: '4vw', height: '4vw' }} src={file.path} alt="img" />
+            </div>
         ));
 
         return (
