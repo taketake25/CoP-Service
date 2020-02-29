@@ -42,7 +42,7 @@ class EditNewArticle extends Component {
 
     handleChangeText(event) {
         this.setState({ text: event.target.value });
-        console.log(event.target.value);
+        // console.log(event.target.value);
     }
     handleChangeTitle(event) {
         this.setState({ article_title: event.target.value });
@@ -131,32 +131,33 @@ class EditNewArticle extends Component {
 
                         <div className="EditNewArticleBodyEditor">
                             <Dropzone onDrop={this.handleOnDrop}
+                                noClick="true"
                                 accept="image/gif,image/jpeg,image/png,image/jpg">
                                 {({ getRootProps, getInputProps }) => (
-                                    <section className="uploadContainer">
+                                    <div className="uploadContainer">
                                         <div {...getRootProps()}>
                                             <input {...getInputProps()} />
                                             {
-                                                <div>Drop 'n' drop some files here, or click to select files</div>
+                                                <TextField
+                                                    fullWidth
+                                                    multiline="true"
+                                                    rows="25"
+                                                    size="small"
+                                                    variant="outlined"
+                                                    placeholder="記事をMarkDown形式で入力"
+                                                    value={this.state.text}
+                                                    onChange={this.handleChangeText}
+                                                />
+                                                // <div>Drop 'n' drop some files here, or click to select files</div>
                                             }
                                         </div>
-                                        <aside>
+                                        {/* <aside>
                                             ここにファイル名が出力されるはずだよ
                                             <ul>{files}</ul>
-                                        </aside>
-                                    </section>
+                                        </aside> */}
+                                    </div>
                                 )}
                             </Dropzone>
-                            <TextField
-                                fullWidth
-                                multiline
-                                rows="15"
-                                size="small"
-                                variant="outlined"
-                                placeholder="記事をMarkDown形式で入力"
-                                value={this.state.text}
-                                onChange={this.handleChangeText}
-                            />
                         </div>
                         <div className="EditNewArticleBodyPreview">
                             <div dangerouslySetInnerHTML={{ __html: marked(this.state.text) }}>
@@ -165,7 +166,10 @@ class EditNewArticle extends Component {
                     </div>
                     {/* <p>{this.state.alert}</p> */}
                     <div className="EditNewArticleFooter">
-                        <Button color="primary" onClick={this.handleChangeSubmit}>投稿する</Button>
+
+                        {/* <Button variant="contained" size="small" onClick={this.showSelfStocks}>ストック</Button> */}
+                        <Button variant="contained" size="small" onClick={this.handleChangeSubmit}>投稿</Button>
+                        {/* <Button color="primary" onClick={this.handleChangeSubmit}>投稿</Button> */}
                     </div>
                 </div>
             </div >

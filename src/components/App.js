@@ -28,14 +28,14 @@ function App() {
           <Route path="/auth" component={authentication} />
           {/* <Route path="*" component={Home} /> */}
         </switch>
-        <div>
+        {/* <div>
           <ul>
             <Link to="/">Home  </Link>
             <Link to="/ArticleViewer">ArticleViewer  </Link>
             <Link to="/EditNewArticle">EditNewArticle  </Link>
             <Link to="/auth">authentication  </Link>
           </ul>
-        </div>
+        </div> */}
       </Router>
     </div >
   );
