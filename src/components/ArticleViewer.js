@@ -86,7 +86,7 @@ class ArticleViewer extends Component {
         if (this.state.text !== "") {
             let new_comment = {
                 comment_user_id: 1,
-                comment_article_id: this.state.article_id,
+                comment_article_id: this.state.article_id.article_id,
                 message: this.state.text,
             };
 
