@@ -2,7 +2,7 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Route, Link,
+  Route, Link, Redirect,
 } from "react-router-dom";
 import { connect } from 'react-redux';
 import Home from './Home';
@@ -10,7 +10,9 @@ import Search from './Search';
 import ArticleViewer from './ArticleViewer';
 import EditNewArticle from './EditNewArticle';
 import authentication from './authentication';
+// import Auth from './Auth';
 import './Home.css';
+import { Switch } from '@material-ui/core';
 
 function App() {
   // render() {
@@ -20,12 +22,18 @@ function App() {
       <Router>
         <switch>
           <Route exact path="/" component={Home} />
+          <Route path="/auth" component={authentication} />
           <Route path="/search/:word" component={Search} />
-          {/* <Route exact path="/:search_word" component={Home} /> */}
           <Route exact path="/ArticleViewer" component={ArticleViewer} />
           <Route path="/ArticleViewer/:article_id" component={ArticleViewer} />
+
+          {/* <Auth>
+            <Switch> */}
+          {/* <Route exact path="/:search_word" component={Home} /> */}
           <Route path="/EditNewArticle" component={EditNewArticle} />
-          <Route path="/auth" component={authentication} />
+          {/* <Redirect from="/" to="/" /> */}
+          {/* </Switch>
+          </Auth> */}
           {/* <Route path="*" component={Home} /> */}
         </switch>
         {/* <div>

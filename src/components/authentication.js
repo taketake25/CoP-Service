@@ -6,14 +6,17 @@ import { withCookies, Cookies } from 'react-cookie';
 import { HomeFooter } from './Home';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Auth from './Auth'
 
 class authentication extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            errors: {},
             // reduxによるデータ保存をしたい．
             user_name: "",
             user_mail: "",
+            user_hash: "",
             user_password: "",
             alert: ""
         }
@@ -44,16 +47,19 @@ class authentication extends Component {
     }
 
     handleSubmit(e) {
+        // e.preventDefault();
+
         const { cookies } = this.props;
         this.setState({ submit: "True" });
-        var user_name = this.state.user_name;
+        var user_mail = this.state.user_mail;
 
         //ここにログイン情報が正しいかの確認処理を行うPOST
-        if (this.state.user_name !== "" && this.state.user_password !== "") {
+        if (this.state.user_mail !== "" && this.state.user_password !== "") {
             let user_info = {
-                user_name: this.state.user_name,
+                user_mail: this.state.user_mail,
                 user_password: this.state.user_password,
             };
+
             // fetch("http://172.20.11.121:3000/user/auth", {
             fetch("http://localhost:1234/user/auth", {
                 // fetch("http://192.168.0.13:4000/user/auth", {
@@ -65,12 +71,13 @@ class authentication extends Component {
             })
                 .then(response => response.json())
                 .then(json => {
-                    this.setState({ user_hash: json.user_hash })
+                    console.log("success...");
+
+                    this.setState({ user_hash: json[0].user_hash })
                     console.log(JSON.stringify(json[0].user_hash));
 
-                    if (json[0].user_hash !== "no") {
-                        cookies.set('user_name', user_name, { path: '/' });
-                        cookies.set('user_hash', json[0].user_hash, { path: '/' });
+                    if (this.state.user_hash !== "no") {
+                        cookies.set('user_hash', this.state.user_hash, { path: '/' });
 
                         this.props.history.push('/')
                     } else {
@@ -83,9 +90,48 @@ class authentication extends Component {
             this.setState({ alert: "情報が入力されていません" })
             console.log("情報が入力されていません")
         }
+
+
+        // // このサイトを参考に．https://github.com/shouheiyamauchi/react-passport-example/blob/master/client/src/containers/LoginPage.jsx
+        // const user_mail = encodeURIComponent(this.state.user_mail);
+        // const password = encodeURIComponent(this.state.password);
+        // const formData = `user_mail=${user_mail}&password=${password}`;
+
+
+        // console.log("sending XML...");
+        // const xhr = new XMLHttpRequest();
+        // xhr.open('post', '/user/auth');
+        // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        // xhr.responseType = 'json';
+        // xhr.addEventListener('load', () => {
+        //     if (xhr.status === 200) { // success
+        //         console.log("success...");
+
+        //         this.setState({ errors: {} }); // change the component-container state
+        //         this.setState({ user_hash: xhr.response.user_hash });
+        //         console.log(JSON.stringify(xhr.response.user_hash));
+
+        //         if (this.state.user_hash !== "no") {
+        //             cookies.set('user_hash', this.state.user_hash, { path: '/' });
+
+        //             this.props.history.push('/')
+        //         } else {
+        //             this.setState({ alert: "入力情報が正しくありません．" })
+        //             console.log("入力情報が正しくありません．")
+        //         }
+
+        //     } else { // failure
+        //         console.log("failue")
+        //         // const errors = xhr.response.errors ? xhr.response.errors : {}; // change the component state
+        //         // errors.summary = xhr.response.message;
+        //         // this.setState({ errors });
+        //     }
+        // });
+        // xhr.send(formData);
     }
 
     handleSigninSubmit(e) {
+
         const { cookies } = this.props;
         var user_name = this.state.user_name;
         let new_user = {
@@ -108,7 +154,6 @@ class authentication extends Component {
                     this.setState({ user_hash: json[0].user_hash })
 
                     if (json[0].user_hash !== "no") {
-                        cookies.set('user_name', user_name, { path: '/' });
                         cookies.set('user_hash', json[0].user_hash, { path: '/' });
 
                         this.props.history.push('/')
@@ -145,7 +190,7 @@ class authentication extends Component {
                         <div>
                             <TextField
                                 variant="outlined"
-                                placeholder="input your email"
+                                placeholder="input your email address"
                                 size="small"
                                 fullWidth
                                 variant="standard"
@@ -174,12 +219,12 @@ class authentication extends Component {
                         <div>
                             <TextField
                                 variant="outlined"
-                                placeholder="input your user_name"
+                                placeholder="input your email address"
                                 size="small"
                                 fullWidth
                                 variant="standard"
                                 value={this.state.query}
-                                onChange={(event) => this.handleChangeUsername(event)}
+                                onChange={(event) => this.handleChangeMail(event)}
                             />
                         </div>
                         <div>

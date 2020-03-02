@@ -32,13 +32,6 @@ class EditNewArticle extends Component {
         };
     }
 
-    // handleOnDrop(event) {
-    //     event.map(file => {
-    //         this.setState({ files: file.name });
-    //         console.log(file.name);
-    //     });
-    // }
-
 
     handleChangeText(event) {
         this.setState({ text: event.target.value });
@@ -166,10 +159,7 @@ class EditNewArticle extends Component {
                     </div>
                     {/* <p>{this.state.alert}</p> */}
                     <div className="EditNewArticleFooter">
-
-                        {/* <Button variant="contained" size="small" onClick={this.showSelfStocks}>ストック</Button> */}
                         <Button variant="contained" size="small" onClick={this.handleChangeSubmit}>投稿</Button>
-                        {/* <Button color="primary" onClick={this.handleChangeSubmit}>投稿</Button> */}
                     </div>
                 </div>
             </div >

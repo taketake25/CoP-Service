@@ -114,4 +114,5 @@ class ArticleCard extends Component {
     }
 }
 
+
 export default withRouter(ArticleList);
