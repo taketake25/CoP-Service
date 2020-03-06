@@ -28,7 +28,7 @@ class authentication extends Component {
         this.handleSigninSubmit = this.handleSigninSubmit.bind(this);
     }
 
-    componentWillMount() { // コンポー年とがDOMに追加される前に一度だけ呼ばれる → 初期化処理に適している
+    componentWillMount() { // コンポーネントがDOMに追加される前に一度だけ呼ばれる → 初期化処理に適している
         const { cookies } = this.props;
         this.state = {
             user_name: cookies.get("user_name") || "",

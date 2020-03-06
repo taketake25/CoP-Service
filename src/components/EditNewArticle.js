@@ -8,30 +8,42 @@ import marked from 'marked';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dropzone from 'react-dropzone';
+import { withCookies, Cookies } from 'react-cookie';
 
 class EditNewArticle extends Component {
     constructor(props) {
         super(props)
+        const { cookies } = this.props;
         this.state = {
             text: "",
             article_title: "",
             article_tags: "",
             alert: "",
+            user_hash: cookies.get("user_hash") || "",
             files: [],
+            filesWereDropped: false,
         }
         autoBind(this);
+
+        if (this.state.user_hash === "") {
+            this.props.history.push('/auth');
+        }
+
+
         this.handleChangeText = this.handleChangeText.bind(this);
         marked.setOptions({ breaks: true });
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
         this.handleChangeTags = this.handleChangeTags.bind(this);
         this.handleChageSubmit = this.handleChangeSubmit.bind(this);
-        // this.handleOnDrop = this.handleOnDrop.bind(this);
-        this.handleOnDrop = (files) => { // なんでコンストラクタで書くかわからん．active
-            this.setState({ files })
-            files.map(file => console.log(file.name))
-        };
+        this.handleOnDrop = this.handleOnDrop.bind(this);
     }
 
+    handleOnDrop = (acceptedFiles) => { // なんでコンストラクタで書くかわからん．active
+        this.setState({ files: this.state.files.concat({ acceptedFiles }) });
+        acceptedFiles.map(file => console.log(file.name))
+        // console.log(acceptedFiles.target.files)
+        this.setState({ filesWereDropped: this.state.files });
+    };
 
     handleChangeText(event) {
         this.setState({ text: event.target.value });
@@ -46,28 +58,40 @@ class EditNewArticle extends Component {
 
     handleChangeSubmit(e) {
         // this.setState({ alert: "ボタンが押されました" })
+
         if (this.state.article_title !== "" && this.state.text !== "") {
             var time = new Date();
-            var date = time.getFullYear() + "-" + (time.getMonth() + 1) + "-" + time.getDate() + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
-            var date2 = time.getFullYear() + "-" + (time.getMonth() + 1) + "-" + time.getDate() + "-" + time.getHours() + "-" + time.getMinutes() + "-" + time.getSeconds();
-            let new_article = {
-                article_title: this.state.article_title,
-                article_date: date,
-                article_date2: date2,
-                article_text: this.state.text,
-                // filenameに関してはexpress側で実装する
-                article_tag_id: 1, //あとで追加するんやでな
-                write_user_id: 1 //あとで実装するんやでな
-            };
+            var date = time.getFullYear() + "." + (time.getMonth() + 1) + "." + time.getDate() + "." + time.getHours() + "." + time.getMinutes() + "." + time.getSeconds();
+            var date2 = time.getFullYear() + "." + (time.getMonth() + 1) + "." + time.getDate() + "." + time.getHours() + "." + time.getMinutes() + "." + time.getSeconds();
+            let formData = new FormData();
+
+            formData.append("user_hash", this.state.user_hash);
+            formData.append("article_title", this.state.article_title);
+            formData.append("article_date", date);
+            formData.append("article_date2", date2);
+            formData.append("article_text", this.state.text);
+            formData.append("article_tag_id", 1); //あとで追加するんやでな
+            formData.append("write_user_id", 1); //あとで実装するんやでな
+
+            if (this.state.filesWereDropped) {
+                for (var i = 0; i < this.state.files.length; i++) {
+                    this.state.files[i].acceptedFiles.forEach(file => {
+                        console.log(file.name)
+                        formData.append("img", file, file.name);
+                    })
+                }
+            }
+            for (var item of formData) console.log(item);
 
             // fetch("http://172.20.11.121:3000/article/create", {
             fetch("http://localhost:1234/article/create", {
                 // fetch("http://192.168.0.13:4000/article/create", {
                 method: "POST",
                 headers: {
-                    'Content-Type': 'application/json;charset=utf-8'
+                    'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundaryO5quBRiT4G7Vm3R7'
                 },
-                body: JSON.stringify(new_article)
+                // body: JSON.stringify(formData)
+                body: formData
             });
             this.props.history.push('/');
         } else {
@@ -167,4 +191,5 @@ class EditNewArticle extends Component {
     }
 }
 
-export default withRouter(EditNewArticle);
+// export default withRouter(EditNewArticle);
+export default withCookies(EditNewArticle);
