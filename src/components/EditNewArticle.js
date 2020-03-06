@@ -87,10 +87,9 @@ class EditNewArticle extends Component {
             fetch("http://localhost:1234/article/create", {
                 // fetch("http://192.168.0.13:4000/article/create", {
                 method: "POST",
-                headers: {
-                    'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundaryO5quBRiT4G7Vm3R7'
-                },
-                // body: JSON.stringify(formData)
+                // headers: {
+                //     'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundaryO5quBRiT4G7Vm3R7'
+                // },
                 body: formData
             });
             this.props.history.push('/');
