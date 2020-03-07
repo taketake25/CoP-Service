@@ -21,6 +21,7 @@ class EditNewArticle extends Component {
             alert: "",
             user_hash: cookies.get("user_hash") || "",
             files: [],
+            file_quantity: 0,
             filesWereDropped: false,
         }
         autoBind(this);
@@ -43,6 +44,7 @@ class EditNewArticle extends Component {
         acceptedFiles.map(file => console.log(file.name))
         // console.log(acceptedFiles.target.files)
         this.setState({ filesWereDropped: this.state.files });
+        this.setState({ file_quantity: this.state.file_quantity + 1 })
     };
 
     handleChangeText(event) {
@@ -72,11 +74,13 @@ class EditNewArticle extends Component {
             formData.append("article_text", this.state.text);
             formData.append("article_tag_id", 1); //あとで追加するんやでな
             formData.append("write_user_id", 1); //あとで実装するんやでな
+            formData.append("file_quantity", this.state.file_quantity); //あとで実装するんやでな
 
             if (this.state.filesWereDropped) {
                 for (var i = 0; i < this.state.files.length; i++) {
                     this.state.files[i].acceptedFiles.forEach(file => {
                         console.log(file.name)
+                        // formData.append("img" + String(i + 1), file, file.name);
                         formData.append("img", file, file.name);
                     })
                 }
@@ -84,15 +88,15 @@ class EditNewArticle extends Component {
             for (var item of formData) console.log(item);
 
             // fetch("http://172.20.11.121:3000/article/create", {
+            // fetch("http://192.168.0.13:4000/article/create", {
             fetch("http://localhost:1234/article/create", {
-                // fetch("http://192.168.0.13:4000/article/create", {
                 method: "POST",
                 // headers: {
                 //     'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundaryO5quBRiT4G7Vm3R7'
                 // },
                 body: formData
             });
-            this.props.history.push('/');
+            // this.props.history.push('/');
         } else {
             this.setState({ alert: "情報が入力されていません" })
         }
